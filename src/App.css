@@ -1,38 +1,72 @@
-.App {
+
+
+.app-bar{
+  background-color: #0F5298;
+}
+
+/* .slider{
+  display: flex;
+  justify-content: center;
+} */
+
+.flashCard {
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+  margin: auto;
+  width:40%;
+  height: 200px;
+  box-shadow: 0 2px 5px #ccc;
+  text-align: left;
+}
+
+.flashCard-top {
+  border-radius: 25px 25px 0 0;
+  height: 40px;
+  width: 100%;
+  background-color: #0F5298;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.flashCard-middle {
+  margin:auto;
+  margin-top:25px;
+}
+
+.flashCard-bottom{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.flashCard-word{
+  font-size: 40px;
+  text-align: center;
+  margin-top:90px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flashCard-definition{
+  font-weight: bold;
+  color:#0F5298;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.flashCard-p{
+  color:#0F5298;
+}
+/* .flashCard-btn{
+  position: absolute;
+  right:    0;
+  bottom:   0;
+  margin:0 20px 20px 0;
+  background-color: #0F5298;
+  border-radius: 5px;
+  color: #ffff;
+  width:100px;
+  height:30px;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.flashCard-btn:hover{
+  background-color:#5294da;
+} */
