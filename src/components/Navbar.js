@@ -26,12 +26,13 @@ const Navbar = () => {
     <div>
     <AppBar position="static" className={classes.root}>
         <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}>
-            <MenuIcon />
-            </IconButton>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
             <Button  color="inherit" label="Flashcards" component={Link} to="/flashcards">Flashcards</Button>
             <Button color="inherit" label="Account" component={Link} to="/account">Account</Button>
+            <Button color="inherit" label="Signup" component={Link} to="/signup">Sign up</Button>
+            <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}>
+            <MenuIcon />
+            </IconButton>
         </Toolbar>
 </AppBar>
   </div>)
