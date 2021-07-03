@@ -9,13 +9,13 @@ const AllFlashCards = () =>{
     const [current, setCurrent] = useState(0);
 
     useEffect(()=>{
-            axios.get("http://127.0.0.1:5000/api/display_all_flashcards")
+            axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":"9c8a0ac9-8123-4888-8823-e773b04efa91"})
                     .then(res => {
+                        console.log(res.data.result)
                         setFlashCards(res.data.result)
                     })
     },[])
     
-
     // const nextFlashCard = () =>{
     //     setCurrent(current === length -1 ? 0 : current + 1);
     // }

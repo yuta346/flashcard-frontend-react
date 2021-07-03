@@ -80,13 +80,10 @@ const FlashCard =(props) =>{
                                     </Button>
                                 </FormControl>
                             </form>
-
-
-
                         </div>      
                 }
                 <div className="flashCard-bottom">
-                    <p onClick={()=> setFlip(!flip)}>FLIP CARD TO LEARN MORE</p>
+                    <p onClick={()=> setFlip(!flip)}>CLICK TO SEE MEANING</p>
                 </div> 
                 
             </div>)
