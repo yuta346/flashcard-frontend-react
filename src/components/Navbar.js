@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 
+
 const useStyles = makeStyles(theme => ({
     root:{
         backgroundColor:"#0F5298"
@@ -18,7 +19,9 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
+
 const Navbar = () => {
+
 
     const classes = useStyles();
 
@@ -27,13 +30,15 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
         <Toolbar>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
-            <Button  color="inherit" label="Flashcards" component={Link} to="/flashcards">Flashcards</Button>
+            <Button  color="inherit" label="AllFlashcards" component={Link} to="/allflashcards">Flashcards</Button>
+            <Button  color="inherit" label="RandomFlashcards" component={Link} to="/randomflashcards">Random Flashcards</Button>
             <Button color="inherit" label="Account" component={Link} to="/account">Account</Button>
             <Button color="inherit" label="Signup" component={Link} to="/signup">Sign up</Button>
             <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}>
             <MenuIcon />
-            </IconButton>
-        </Toolbar>
+          
+                </IconButton>
+      </Toolbar>
 </AppBar>
   </div>)
 }

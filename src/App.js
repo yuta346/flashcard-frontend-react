@@ -3,7 +3,8 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import './App.css';
 import Navbar from './components/Navbar';
 import Signup from "./components/Singup";
-import FlashCards from "./components/FlashCards"
+import AllFlashCards from "./components/AllFlashCards";
+import RamdomFlashCards from "./components/RandomFlashCards";
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     
     <Router>
       <Navbar/>
-      <Route path="/flashcards" component={FlashCards}/>
+      <Route path="/allflashcards" component={AllFlashCards}/>
+      <Route path="/randomflashcards" component={RamdomFlashCards}/>
       <Route path="/account"/>
       <Route path="/signup" component={Signup}/>
     </Router>
