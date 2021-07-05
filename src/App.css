@@ -1,13 +1,11 @@
 
-
 .app-bar{
   background-color: #0F5298;
 }
 
-/* .slider{
-  display: flex;
-  justify-content: center;
-} */
+.slider{
+  margin-top: 70px;
+}
 
 .flashCard {
   border-radius: 25px;
@@ -52,7 +50,7 @@
 }
 
 .flashCard-word{
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   margin-top:90px;
 }
@@ -65,19 +63,19 @@
 .flashCard-p{
   color:#0F5298;
 }
-/* .flashCard-btn{
+
+.forward-icon {
   position: absolute;
-  right:    0;
-  bottom:   0;
-  margin:0 20px 20px 0;
-  background-color: #0F5298;
-  border-radius: 5px;
-  color: #ffff;
-  width:100px;
-  height:30px;
-  font-weight: bold;
+  top: 50%;
+  right: 360px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.flashCard-btn:hover{
-  background-color:#5294da;
-} */
+.back-icon{
+  position: absolute;
+  top: 50%;
+  left: 360px;
+  cursor: pointer;
+  user-select: none;
+}

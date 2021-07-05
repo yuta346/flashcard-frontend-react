@@ -25,7 +25,7 @@ const FlashCard =(props) =>{
     const classes = useStyles();
     const [value, setValue] = useState('');
     const [error, setError] = useState(false);
-    const [helperText, setHelperText] = useState('Choose wisely');
+    const [helperText, setHelperText] = useState('Choose wisely...');
     const [record, setRecord] = useState({"numAttempt":0})
 
 
@@ -61,6 +61,7 @@ const FlashCard =(props) =>{
                 {flip ? <div>
                             <div className="flashCard-top"/>
                             <div className="flashCard-middle">
+                                <p className="flashCard-word">{word}</p>
                                 <p><span className="flashCard-definition">Definition: </span>{definition}</p>
                                 <p><span className="flashCard-p">Speech: </span> {speech}</p>
                                 <p><span className="flashCard-p">Usage: </span>{example}</p>
@@ -81,7 +82,7 @@ const FlashCard =(props) =>{
                                     <FormControlLabel value={choices[2]} control={<Radio color="secondary"/>} label={choices[2]} />
                                     <FormControlLabel value={choices[3]} control={<Radio color="secondary"/>} label={choices[3]} />
                                     </RadioGroup>
-                                    <FormHelperText>{helperText}</FormHelperText>
+                                    <FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>
                                     <Button type="submit" variant="outlined" color="default" className={classes.button}>
                                     Check Answer
                                     </Button>
