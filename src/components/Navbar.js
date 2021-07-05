@@ -1,10 +1,10 @@
 
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom"
-import { AppBar, Tabs, Toolbar, Tab, Button, IconButton } from "@material-ui/core";
+import { AuthContext } from "../AuthContext";
+import { AppBar, Toolbar, Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -28,9 +28,15 @@ const useStyles = makeStyles(theme => ({
   
 
 const Navbar = () => {
+  const {auth, setAuth} = useContext(AuthContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  const logout = () => {
+    sessionStorage.removeItem("session_id")
+    setAuth(null)
+  }
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -64,12 +70,7 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
         <Toolbar>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
-            
-            {/* <IconButton edge="start" color="inherit" aria-label="menu" className={classes.menuButton}> */}
-            {/* <MenuIcon /> */}
-          
-            {/* </IconButton> */}
-            <div>
+            {auth ? <div>
               <Button
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -107,8 +108,12 @@ const Navbar = () => {
                 )}
               </Popper>
               <Button color="inherit" label="Account" component={Link} to="/account">Account</Button>
+              <Button onClick={logout} color="inherit" label="Logout" component={Link} to="/">Logout</Button>
+              </div>:
+            <div>
               <Button color="inherit" label="Signup" component={Link} to="/signup">Sign up</Button>
-            </div>
+              <Button color="inherit" label="Login" component={Link} to="/login">Login</Button>
+            </div>}
           </Toolbar>
     </AppBar>
   </div>)

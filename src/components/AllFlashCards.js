@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCard from "./FlashCard"
 
 const AllFlashCards = () =>{
-
+    const {auth} = useContext(AuthContext);
     const [flashCards, setFlashCards] = useState([]);
     const length = flashCards.length;
     const [current, setCurrent] = useState(0);
 
     useEffect(()=>{
-            axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":"9c8a0ac9-8123-4888-8823-e773b04efa91"})
+            axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id")})
                     .then(res => {
                         console.log(res.data.result)
                         setFlashCards(res.data.result)

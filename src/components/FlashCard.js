@@ -23,9 +23,12 @@ const FlashCard =(props) =>{
     const {word, speech, definition, short_definition, example, choices} = props.flashCard;
     const [flip, setFlip] = useState(false);
     const classes = useStyles();
-    const [value, setValue] = React.useState('');
-    const [error, setError] = React.useState(false);
-    const [helperText, setHelperText] = React.useState('Choose wisely');
+    const [value, setValue] = useState('');
+    const [error, setError] = useState(false);
+    const [helperText, setHelperText] = useState('Choose wisely');
+    const [record, setRecord] = useState({"numAttempt":0})
+
+
 
     const handleRadioChange = (event) => {
         setValue(event.target.value);
@@ -36,11 +39,15 @@ const FlashCard =(props) =>{
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (value ===short_definition) {
+        if (value === short_definition) {
         setHelperText('You got it!');
+        setRecord({...record, [word]: true, numAttempt: record.numAttempt + 1})
+        console.log(record)
         setError(false);
-        } else if (value === 'worst') {
+        } else if (value !== short_definition) {
         setHelperText('Sorry, wrong answer!');
+        setRecord({...record, [word]: false, numAttempt: record.numAttempt + 1})
+        console.log(record)
         setError(true);
         } else {
         setHelperText('Please select an option.');
@@ -78,6 +85,7 @@ const FlashCard =(props) =>{
                                     <Button type="submit" variant="outlined" color="default" className={classes.button}>
                                     Check Answer
                                     </Button>
+                                    
                                 </FormControl>
                             </form>
                         </div>      
@@ -85,7 +93,6 @@ const FlashCard =(props) =>{
                 <div className="flashCard-bottom">
                     <p onClick={()=> setFlip(!flip)}>CLICK TO SEE MEANING</p>
                 </div> 
-                
             </div>)
 
 }

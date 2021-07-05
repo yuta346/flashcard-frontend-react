@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCard from "./FlashCard"
+import TextField from '@material-ui/core/TextField';
 
 const RamdomFlashCards = () => {
 
+    const {auth} = useContext(AuthContext);
     const [numCards, setNumCards] = useState(0)
     const [randomFlashCards, setRandomFlashCards] = useState([])
 
@@ -12,7 +15,7 @@ const RamdomFlashCards = () => {
     }
 
     const generateFlashCards = async () => {
-        const response = await axios.post('http://127.0.0.1:5000/api/generate_flashcards', {"session_id":"9c8a0ac9-8123-4888-8823-e773b04efa91", "num_cards":numCards});
+        const response = await axios.post('http://127.0.0.1:5000/api/generate_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
         console.log(response.data.result)
         setRandomFlashCards(response.data.result)
     }
@@ -20,9 +23,20 @@ const RamdomFlashCards = () => {
 
 
     return (<div>
-
-            <label >Number of Questions</label>  
-            <input onChange={userInputHandler} placeholder="0"/>
+            <h1>Generate Cards</h1>
+            <label>Number of Questions</label>  
+            <TextField
+                onChange={userInputHandler}
+                id="outlined-number"
+                defaultValue="0"
+                label="Number"
+                type="number"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+                inputProps={{ min: 0}}
+                variant="outlined"
+            />
             <button onClick={generateFlashCards}>Generate</button>
             {randomFlashCards.map((randomFlashCard, index) => {
                 return <FlashCard index={index} flashCard={randomFlashCard} key={index}/>
