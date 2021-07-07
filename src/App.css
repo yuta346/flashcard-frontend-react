@@ -31,7 +31,6 @@
 
 .flashCard-middle {
   margin:auto;
-  margin-top:25px;
 }
 
 .flashCard-bottom{
@@ -52,7 +51,7 @@
 .flashCard-word{
   font-size: 50px;
   text-align: center;
-  margin-top:90px;
+  margin-top:70px;
 }
 
 .flashCard-definition{
@@ -72,6 +71,9 @@
   user-select: none;
 }
 
+
+
+
 .back-icon{
   position: absolute;
   top: 50%;
@@ -79,3 +81,34 @@
   cursor: pointer;
   user-select: none;
 }
+
+.create-flashcard-container{
+    border-radius: 25px;
+    position: relative;
+    padding: 25px 15px;
+    margin: auto;
+    margin-top: 70px;
+    width:40%;
+    height: 570px;
+    box-shadow: 0 2px 5px #ccc;
+    text-align: left;
+}
+
+.create-flashcard-top-container{
+  display:flex;
+}
+
+.create-flashcard-container h1{
+  text-align: center;
+}
+
+.create-flashcard-container p{
+  color:#0F5298;
+}
+
+
+.create-flashcard-button-container{
+  margin:20px 0 20px 0;
+  text-align: center;
+}
+

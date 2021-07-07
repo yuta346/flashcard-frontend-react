@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Signup from "./components/Singup";
 import AllFlashCards from "./components/AllFlashCards";
 import RamdomFlashCards from "./components/RandomFlashCards";
+import CreateFlashCard from "./components/CreateFlashCard";
+import ResultTable from "./components/ResultTable"
 import {AuthContext} from "./AuthContext";
 
 
@@ -25,7 +27,9 @@ function App() {
         <Route path="/" exact component={Landing}/>
         <Route path="/allflashcards" exact component={AllFlashCards}/>
         <Route path="/randomflashcards" exact component={RamdomFlashCards}/>
+        <Route path="/createflashcard" exact component={CreateFlashCard}/>
         <Route path="/account" exact/>
+        <Route path="/result_table" exact component={ResultTable}/>
         <Route path="/login" exact component={Login}/>
         <Route path="/signup" exact component={Signup}/>
       </AuthContext.Provider>

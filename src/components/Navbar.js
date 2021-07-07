@@ -101,6 +101,12 @@ const Navbar = () => {
                           >
                            GENERATE RANDOM CARDS
                           </MenuItem>
+                          <MenuItem onClick={handleClose} 
+                                    label="CreateFlashCard" 
+                                    component={Link} to="/createflashcard"
+                          >
+                           Create Flash Card
+                          </MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>

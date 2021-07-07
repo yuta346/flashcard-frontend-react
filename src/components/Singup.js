@@ -54,8 +54,6 @@ const Signup = () => {
                     />
                     <button>Sign up</button>
                 </form>
-                <p>{auth.username}</p>
-                <p>{auth.session_id}</p>
             </div>) 
 }
 

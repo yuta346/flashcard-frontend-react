@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
       margin: theme.spacing(1, 1, 0, 0),
+      width: "100%",
     },
   }));
 
@@ -26,7 +27,6 @@ const FlashCard =(props) =>{
     const [value, setValue] = useState('');
     const [error, setError] = useState(false);
     const [helperText, setHelperText] = useState('Choose wisely...');
-    const [record, setRecord] = useState({"numAttempt":0})
 
 
 
@@ -36,22 +36,23 @@ const FlashCard =(props) =>{
         setError(false);
     };
 
+   
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (value === short_definition) {
-        setHelperText('You got it!');
-        setRecord({...record, [word]: true, numAttempt: record.numAttempt + 1})
-        console.log(record)
-        setError(false);
+            setHelperText('You got it!');
+            let isMastered = JSON.parse(sessionStorage.getItem("isMastered"));
+            isMastered[word][1] = true;
+            sessionStorage.setItem("isMastered",JSON.stringify(isMastered));
+            setError(false);
         } else if (value !== short_definition) {
-        setHelperText('Sorry, wrong answer!');
-        setRecord({...record, [word]: false, numAttempt: record.numAttempt + 1})
-        console.log(record)
-        setError(true);
+            setHelperText('Sorry, wrong answer!');
+            setError(true);
         } else {
-        setHelperText('Please select an option.');
-        setError(true);
+            setHelperText('Please select an option.');
+            setError(true);
         }
     };
 
@@ -72,6 +73,7 @@ const FlashCard =(props) =>{
                             <div className="flashCard-top"/>
                             <div className="flashCard-middle">
                                 <p className="flashCard-word">{word}</p>
+
                             </div>
                             
                             <form onSubmit={handleSubmit}>
@@ -83,11 +85,10 @@ const FlashCard =(props) =>{
                                     <FormControlLabel value={choices[3]} control={<Radio color="secondary"/>} label={choices[3]} />
                                     </RadioGroup>
                                     <FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>
-                                    <Button type="submit" variant="outlined" color="default" className={classes.button}>
-                                    Check Answer
-                                    </Button>
-                                    
                                 </FormControl>
+                                <Button type="submit" variant="outlined" color="default" className={classes.button}>
+                                    Check Answer
+                                </Button>
                             </form>
                         </div>      
                 }
