@@ -5,9 +5,10 @@ import Landing from "./components/Landing";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Singup";
-import AllFlashCards from "./components/AllFlashCards";
-import RamdomFlashCards from "./components/RandomFlashCards";
+import Quiz from "./components/Quiz";
+import Study from "./components/Study";
 import CreateFlashCard from "./components/CreateFlashCard";
+import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import ResultTable from "./components/ResultTable"
 import {AuthContext} from "./AuthContext";
 
@@ -25,9 +26,10 @@ function App() {
     <AuthContext.Provider value={{auth, setAuth}}>  
         <Navbar/>
         <Route path="/" exact component={Landing}/>
-        <Route path="/allflashcards" exact component={AllFlashCards}/>
-        <Route path="/randomflashcards" exact component={RamdomFlashCards}/>
-        <Route path="/createflashcard" exact component={CreateFlashCard}/>
+        <Route path="/quiz" exact component={Quiz}/>
+        <Route path="/study" exact component={Study}/>
+        <Route path="/create/custom_flashcard" exact component={CreateCustomFlashCard}/>
+        <Route path="/create/flashcard" exact component={CreateFlashCard}/>
         <Route path="/account" exact/>
         <Route path="/result_table" exact component={ResultTable}/>
         <Route path="/login" exact component={Login}/>

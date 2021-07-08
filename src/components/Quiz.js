@@ -8,13 +8,15 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 
-const AllFlashCards = () =>{
+const Quiz = () =>{
     const {auth} = useContext(AuthContext);
     const [flashCards, setFlashCards] = useState([]);
     const length = flashCards.length;
     const [current, setCurrent] = useState(0);
     const history = useHistory();
     const isMastered = sessionStorage.getItem("isMastered")
+
+    console.log(flashCards)
 
  
     useEffect(()=>{
@@ -37,6 +39,7 @@ const AllFlashCards = () =>{
 
     return (<div>
                 <div className="slider">
+                <h1 style={{textAlign:"center"}}>{current+1}/{length}</h1>
                     {auth && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
                     {flashCards.map((flashCard, index) => {
 
@@ -54,4 +57,4 @@ const AllFlashCards = () =>{
 
 }
 
-export default AllFlashCards;
+export default Quiz;

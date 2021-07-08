@@ -55,22 +55,22 @@ const ResultTable = () =>{
             
             <TableContainer style={{ width: "80%" , margin:" 50px auto"}} component={Paper}>
             <Table aria-label="simple table">
-            <TableHead>
+            <TableHead style={{backgroundColor:"#1DA1F2"}}>
               <TableRow>
-                <TableCell style={{fontSize:"1.2rem"}}>Attempted Words</TableCell>
-                <TableCell style={{fontSize:"1.2rem"}} align="left">Speech</TableCell>
-                <TableCell style={{fontSize:"1.2rem"}} align="left">Definition</TableCell>
-                <TableCell style={{fontSize:"1.2rem"}} align="right">Result</TableCell>
+                <TableCell style={{fontSize:"1.2rem",color:"#FFFF"}}>Attempted Word</TableCell>
+                <TableCell style={{fontSize:"1.2rem",color:"#FFFF"}} align="left">Correct Definition</TableCell>
+                <TableCell style={{fontSize:"1.2rem",color:"#FFFF"}} align="left">Example</TableCell>
+                <TableCell style={{fontSize:"1.2rem",color:"#FFFF"}} align="right">Result</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {result_merged.map((row) => (
                 <TableRow key={row.word}>
-                  <TableCell style={{fontSize:"1rem"}} component="th" scope="row">
+                  <TableCell style={{fontSize:"1.2rem", fontWeight:"bold"}} component="th" scope="row">
                     {row.word}
                   </TableCell>
-                  <TableCell style={{fontSize:"1rem"}} align="left">{row.speech}</TableCell>
-                  <TableCell style={{fontSize:"1rem"}} align="left">{row.short_definition}</TableCell>
+                  <TableCell style={{fontSize:"1rem"}} align="left">{row.definition}</TableCell>
+                  <TableCell style={{fontSize:"1rem"}} align="left">{row.example ? row.example : "None"}</TableCell>
                   <TableCell style={{fontSize:"1rem"}} align="right">{row.result}</TableCell>
                 </TableRow>
               ))}

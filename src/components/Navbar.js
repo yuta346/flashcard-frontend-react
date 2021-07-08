@@ -90,20 +90,26 @@ const Navbar = () => {
                       <ClickAwayListener onClickAway={handleClose}>
                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                           <MenuItem onClick={handleClose} 
-                                    label="AllFlashcards" 
-                                    component={Link} to="/allflashcards"
+                                    label="Quiz" 
+                                    component={Link} to="/quiz"
                           >
-                            All CARDS
+                            Quiz
                           </MenuItem>
                           <MenuItem onClick={handleClose} 
-                                    label="RandomFlashcards" 
-                                    component={Link} to="/randomflashcards"
+                                    label="Study" 
+                                    component={Link} to="/study"
                           >
-                           GENERATE RANDOM CARDS
+                            Study
                           </MenuItem>
                           <MenuItem onClick={handleClose} 
                                     label="CreateFlashCard" 
-                                    component={Link} to="/createflashcard"
+                                    component={Link} to="/create/custom_flashcard"
+                          >
+                           Create Custom Flash Card
+                          </MenuItem>
+                          <MenuItem onClick={handleClose} 
+                                    label="CreateFlashCard" 
+                                    component={Link} to="/create/flashcard"
                           >
                            Create Flash Card
                           </MenuItem>
