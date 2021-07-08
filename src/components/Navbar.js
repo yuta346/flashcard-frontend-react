@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const logout = () => {
     sessionStorage.removeItem("session_id")
-    setAuth(null)
+    setAuth({"username":null, "session_id":null})
   }
 
   const handleToggle = () => {
@@ -70,7 +70,7 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
         <Toolbar>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
-            {auth ? <div>
+            {auth.session_id ? <div>
               <Button
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -121,7 +121,8 @@ const Navbar = () => {
               </Popper>
               <Button color="inherit" label="Account" component={Link} to="/account">Account</Button>
               <Button onClick={logout} color="inherit" label="Logout" component={Link} to="/">Logout</Button>
-              </div>:
+              </div>
+              :
             <div>
               <Button color="inherit" label="Signup" component={Link} to="/signup">Sign up</Button>
               <Button color="inherit" label="Login" component={Link} to="/login">Login</Button>
