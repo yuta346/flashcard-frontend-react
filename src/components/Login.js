@@ -18,6 +18,7 @@ const Login = () => {
         e.preventDefault();
         const response = await axios.post('http://127.0.0.1:5000/api/login', userInput);
         const userData = response.data
+        console.log(response)
         if (userData.status === "success"){
             setAuth({...auth, username:userData.username, session_id:userData.session_id})
             sessionStorage.setItem("session_id", userData.session_id)

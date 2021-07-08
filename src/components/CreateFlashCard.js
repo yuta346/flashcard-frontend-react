@@ -26,8 +26,7 @@ const CreateFlashCard = () =>{
     const [wordInput, setWordInput] = useState("")
     const [definition_choice, setDefinitionChoice] = useState([])
     const [radioValue, setRadioValue] = useState('');
-
-    console.log(definition_choice)
+    const [statusMessage, setStatusMessage] = useState("")
 
                                                 
     const userInputHandler = (e) => {
@@ -48,7 +47,12 @@ const CreateFlashCard = () =>{
     const submitHandler = async () =>{
         const response = await axios.post('http://127.0.0.1:5000/api/add/word', {"session_id":sessionStorage.getItem("session_id"), "radioValue":radioValue, "word_info_list":definition_choice});    
         const data = response.data
-        console.log(radioValue)
+        if(data.status == "success"){
+            setStatusMessage("Added Successfully!")
+        }
+        else{
+            setStatusMessage("Word does not exits")
+        }
     }
 
 
@@ -89,6 +93,7 @@ const CreateFlashCard = () =>{
                         )
                         }
                        )}
+                    <p style={{fontSize:"1rem", color:"#22bb33"}}>{statusMessage}</p>
                     </RadioGroup>
                     </FormControl>
                     <div className="create-flashcard-button-container">

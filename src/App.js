@@ -20,7 +20,6 @@ function App() {
 
   return (
     <div className="App">
-    
     <Router>
     <Switch>
     <AuthContext.Provider value={{auth, setAuth}}>  
