@@ -27,8 +27,11 @@ const CreateFlashCard = () =>{
     const [definition_choice, setDefinitionChoice] = useState([])
     const [radioValue, setRadioValue] = useState('');
     const [statusMessage, setStatusMessage] = useState("")
+    const [wordNotFoundMessage, setWordNotFoundMessage] = useState("")
+    const [searchStatus, setSearchStatus] = useState(null)
 
                                                 
+    console.log(definition_choice)
     const userInputHandler = (e) => {
         setWordInput(e.target.value)
     }
@@ -41,7 +44,16 @@ const CreateFlashCard = () =>{
         e.preventDefault();
         const response = await axios.post('http://127.0.0.1:5000/api/serach/definitions', {"session_id":sessionStorage.getItem("session_id"),"word":wordInput});    
         const data = response.data
-        setDefinitionChoice(data.definition_choice)
+        if(data.status === "success"){
+            console.log(data.definition_choice)
+            setSearchStatus(true)
+            setDefinitionChoice(data.definition_choice)
+        }else{
+            console.log("failed")
+            setSearchStatus(false)
+            setWordNotFoundMessage("This Word Does Not Exist ")
+        }
+        
     }
 
     const submitHandler = async () =>{
@@ -50,39 +62,39 @@ const CreateFlashCard = () =>{
         if(data.status == "success"){
             setStatusMessage("Added Successfully!")
         }
-        else{
-            setStatusMessage("Word does not exits")
-        }
     }
 
 
 
     return (<div className="create-flashcard-container">
-                <h1>Create A Card</h1>
-                <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
-                    <div>
+                {/* <h1 style={{width:"100%"}}>Create A Card</h1> */}
+                <div className="create-flashcard-left-container">
+                    <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
                         <div>
-                            <p style={{fontSize:"1.3rem"}}>Word</p>
-                            <TextField 
-                                onChange={userInputHandler}
-                                style={{width:"100%"}}
-                                id="outlined-basic" 
-                                variant="outlined" 
-                                name="word"
-                            />
-                        </div>
-                        <div className="create-flashcard-button-container">
-                            <Button 
-                                onClick={submitWordHandler}
-                                style={{backgroundColor:"#007EA7", color:"#FFFF", width:"30%", marginTop:"20px"}}
-                                variant="contained">
-                                Search
-                            </Button>
-                        </div>
-                    </div>   
-                </form>   
+                            <div>
+                                <p style={{fontSize:"1.3rem"}}>Word</p>
+                                <TextField 
+                                    onChange={userInputHandler}
+                                    style={{width:"100%"}}
+                                    id="outlined-basic" 
+                                    variant="outlined" 
+                                    name="word"
+                                />
+                            </div>
+                            <div className="create-flashcard-button-container">
+                                {! searchStatus ? <p>{wordNotFoundMessage}</p>:null}
+                                <Button 
+                                    onClick={submitWordHandler}
+                                    style={{backgroundColor:"#007EA7", color:"#FFFF", width:"30%", marginTop:"20px"}}
+                                    variant="contained">
+                                    Search
+                                </Button>
+                            </div>
+                        </div>   
+                    </form>  
+                </div>
 
-                <div>
+                <div className="create-flashcard-right-container">
                 <FormControl component="fieldset" style={{marginTop:"30px"}}>
                     <FormLabel component="legend" style={{marginBottom:"10px", fontSize:"1.3rem"}}>Choose a definition</FormLabel>
                     <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>

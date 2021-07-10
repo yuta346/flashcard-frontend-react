@@ -17,6 +17,7 @@ const Quiz = () =>{
     const isMastered = sessionStorage.getItem("isMastered")
 
     console.log(flashCards)
+    console.log(auth)
 
  
     useEffect(()=>{

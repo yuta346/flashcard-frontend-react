@@ -9,27 +9,28 @@ import Quiz from "./components/Quiz";
 import Study from "./components/Study";
 import CreateFlashCard from "./components/CreateFlashCard";
 import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
+import Account from "./components/Account";
 import ResultTable from "./components/ResultTable"
 import {AuthContext} from "./AuthContext";
 
 
 function App() {
 
-  const [auth, setAuth] = useState({"username":null, "session_id":null})
+  const [auth, setAuth] = useState(sessionStorage.getItem("session_id"))
 
 
   return (
     <div className="App">
     <Router>
     <Switch>
-    <AuthContext.Provider value={{auth, setAuth}}>  
+    <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>  
         <Navbar/>
         <Route path="/" exact component={Landing}/>
         <Route path="/quiz" exact component={Quiz}/>
         <Route path="/study" exact component={Study}/>
         <Route path="/create/custom_flashcard" exact component={CreateCustomFlashCard}/>
         <Route path="/create/flashcard" exact component={CreateFlashCard}/>
-        <Route path="/account" exact/>
+        <Route path="/account" exact component={Account}/>
         <Route path="/result_table" exact component={ResultTable}/>
         <Route path="/login" exact component={Login}/>
         <Route path="/signup" exact component={Signup}/>

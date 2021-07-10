@@ -20,8 +20,9 @@ const Login = () => {
         const userData = response.data
         console.log(response)
         if (userData.status === "success"){
-            setAuth({...auth, username:userData.username, session_id:userData.session_id})
+            // setAuth({...auth, username:userData.username, auth:true})
             sessionStorage.setItem("session_id", userData.session_id)
+            setAuth(sessionStorage.getItem("session_id"))
         }
     }
 

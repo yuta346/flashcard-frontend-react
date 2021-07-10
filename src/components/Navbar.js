@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const logout = () => {
     sessionStorage.removeItem("session_id")
-    setAuth({"username":null, "session_id":null})
+    setAuth()
   }
 
   const handleToggle = () => {
@@ -70,7 +70,7 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
         <Toolbar>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
-            {auth.session_id ? <div>
+            {auth? <div>
               <Button
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}

@@ -83,16 +83,20 @@
 }
 
 .create-flashcard-container{
+
+    justify-content:space-between;
     border-radius: 25px;
     position: relative;
     padding: 25px 15px;
     margin: auto;
     margin-top: 70px;
-    width:40%;
+    width:50%;
     height: 570px;
     box-shadow: 0 2px 5px #ccc;
     text-align: left;
 }
+
+
 
 .create-flashcard-top-container{
   display:flex;
