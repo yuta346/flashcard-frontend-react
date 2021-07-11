@@ -24,36 +24,47 @@ const Signup = () => {
         }
     }
 
-    return (<div className="signup-container">
-                <h1>Sign up</h1>
-                <form onSubmit={submitHandler}>
-                    <TextField
-                        onChange={inputHandler} 
-                        name = "username" 
-                        required
-                        id="outlined-required"
-                        label="Username"
-                        variant="outlined"
-                    />
-                    <TextField
-                        onChange={inputHandler} 
-                        name = "email"
-                        required
-                        id="outlined-required"
-                        label="Email"
-                        variant="outlined"
-                    />
-                    <TextField
-                        onChange={inputHandler} 
-                        name = "password"
-                        required
-                        id="outlined-required"
-                        label="Password"
-                        variant="outlined"
-                        type="password"
-                    />
-                    <button>Sign up</button>
+    return (<div className="signup-page">
+            <div className="form-container">
+                <form className="form" onSubmit={submitHandler}>
+                <h1 className="signup-title">Sign up</h1>
+                    <div>
+                        <TextField
+                            onChange={inputHandler} 
+                            name = "username" 
+                            required
+                            id="outlined-required"
+                            label="Username"
+                            variant="outlined"
+                            style = {{width: "100%"}}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            onChange={inputHandler} 
+                            name = "email"
+                            required
+                            id="outlined-required"
+                            label="Email"
+                            variant="outlined"
+                            style = {{width: "100%"}}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            onChange={inputHandler} 
+                            name = "password"
+                            required
+                            id="outlined-required"
+                            label="Password"
+                            variant="outlined"
+                            type="password"
+                            style = {{width: "100%"}}
+                        />
+                    </div>
+                    <button className="signup-btn">Sign up</button>
                 </form>
+            </div>
             </div>) 
 }
 

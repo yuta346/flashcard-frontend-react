@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const logout = () => {
     sessionStorage.removeItem("session_id")
-    setAuth()
+    setAuth("")
   }
 
   const handleToggle = () => {

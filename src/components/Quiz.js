@@ -16,9 +16,6 @@ const Quiz = () =>{
     const history = useHistory();
     const isMastered = sessionStorage.getItem("isMastered")
 
-    console.log(flashCards)
-    console.log(auth)
-
  
     useEffect(()=>{
             axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id")})
@@ -40,16 +37,16 @@ const Quiz = () =>{
 
     return (<div>
                 <div className="slider">
-                <h1 style={{textAlign:"center"}}>{current+1}/{length}</h1>
+                {/* <h1 style={{textAlign:"center"}}>{current+1}/{length}</h1> */}
                     {auth && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
                     {flashCards.map((flashCard, index) => {
-
+                        flashCard["type"] = "quiz"
                         return (<div>
                         {index === current && <FlashCard 
-                                        key={index}
-                                        index={index} 
-                                        flashCard={flashCard} 
-                                        />}
+                                                key={index}
+                                                index={index} 
+                                                flashCard={flashCard} 
+                                              />}
                                 </div>)
                         })
                     }

@@ -27,22 +27,24 @@ const ResultTable = () =>{
         }else{
             results.push({"id": value[0],"word":key, "result":"Wrong"})
         }
-        console.log(results)
       }
     results.sort((a, b) => (a.id > b.id) ? 1 : -1)
 
     let result_merged = [];
 
+
     for(let i=0; i<results.length; i++) {
-        result_merged.push({
-        ...results[i], 
-        ...flashcards[i]
-        });
+      result_merged.push({
+       ...results[i], 
+       ...(flashcards.find((itmInner) => itmInner.word_id === results[i].id))}
+      );
     }
+
 
     let length = result_merged.length;
     score = Math.round(numCorrect/length * 100)
 
+    console.log("result merged")
     console.log(result_merged)
 
 
@@ -70,7 +72,7 @@ const ResultTable = () =>{
                     {row.word}
                   </TableCell>
                   <TableCell style={{fontSize:"1rem"}} align="left">{row.definition}</TableCell>
-                  <TableCell style={{fontSize:"1rem"}} align="left">{row.example ? row.example : "None"}</TableCell>
+                  <TableCell style={{fontSize:"1rem"}} align="left">{row.example ? row.example : "Not Available"}</TableCell>
                   <TableCell style={{fontSize:"1rem"}} align="right">{row.result}</TableCell>
                 </TableRow>
               ))}

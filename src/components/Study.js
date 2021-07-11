@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import { useHistory } from "react-router";
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
-import FlashCard from "./FlashCard"
+import FlashCardStudy from "./FlashCard"
 import TextField from '@material-ui/core/TextField';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -37,7 +37,7 @@ const Study = () => {
                     {flashCards.length > 0 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
                     {flashCards.map((flashCard, index) => {
                         return (<div>
-                        {index === current && <FlashCard 
+                        {index === current && <FlashCardStudy
                                         key={index}
                                         index={index} 
                                         flashCard={flashCard} 
@@ -45,7 +45,6 @@ const Study = () => {
                                 </div>)
                         })
                     }
-                    {flashCards.length > 0 && <h1 style={{textAlign:"center"}}>{current+1}/{length}</h1>}
             </div>
             <div style={{textAlign:"center",position:"absolute",top:"40px",right:"20px",marginTop:"50px"}}>
                     <TextField

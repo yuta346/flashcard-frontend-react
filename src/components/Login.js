@@ -26,10 +26,11 @@ const Login = () => {
         }
     }
 
-    return (<div className="login-container">
-                <h1>Login</h1>
-                <form onSubmit={submitHandler}>
-             
+    return (<div className="login-page">
+    <div className="form-container">
+        <form className="form" onSubmit={submitHandler}>
+        <h1 className="login-title">Log In</h1>
+            <div>
                 <TextField
                     onChange={inputHandler} 
                     name = "username" 
@@ -37,7 +38,10 @@ const Login = () => {
                     id="outlined-required"
                     label="Username"
                     variant="outlined"
+                    style = {{width: "100%"}}
                 />
+            </div>
+            <div>
                 <TextField
                     onChange={inputHandler} 
                     name = "password"
@@ -46,10 +50,13 @@ const Login = () => {
                     label="Password"
                     variant="outlined"
                     type="password"
+                    style = {{width: "100%"}}
                 />
-                    <button>Log In</button>
-                </form>
-            </div>) 
+            </div>
+            <button className="login-btn">Login</button>
+        </form>
+    </div>
+    </div>) 
 }
 
 export default Login;
