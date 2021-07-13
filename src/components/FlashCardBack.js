@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const FlashCardBack = ({word, short_definition,choices}) => {
+const FlashCardBack = ({word, short_definition,choices, type}) => {
 
     const classes = useStyles();
     const [value, setValue] = useState('');
@@ -59,17 +59,17 @@ const FlashCardBack = ({word, short_definition,choices}) => {
                 </div>     
                 <form onSubmit={handleSubmit}>
                     <FormControl component="fieldset" error={error} className={classes.formControl}>
-                        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+                        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange} style={type =="quiz" ?{marginTop:"40px"}:null}>
                         <FormControlLabel value={choices[0]} control={<Radio color="secondary"/>} label={choices[0]} />
                         <FormControlLabel value={choices[1]} control={<Radio color="secondary"/>} label={choices[1]} />
                         <FormControlLabel value={choices[2]} control={<Radio color="secondary"/>} label={choices[2]} />
                         <FormControlLabel value={choices[3]} control={<Radio color="secondary"/>} label={choices[3]} />
                         </RadioGroup>
-                        <FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>
+                        {type =="quiz" ? null:<FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>}
                     </FormControl>
-                    <Button type="submit" variant="outlined" color="default" className={classes.button}>
+                    {type =="quiz" ? null:<Button type="submit" variant="outlined" color="default" className={classes.button}>
                         Check Answer
-                    </Button>
+                    </Button>}
                 </form>
             </div>  
     )

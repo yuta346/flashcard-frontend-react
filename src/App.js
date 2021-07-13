@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Singup";
 import Quiz from "./components/Quiz";
 import Study from "./components/Study";
+import StudyTop from "./components/StudyTop";
 import CreateFlashCard from "./components/CreateFlashCard";
 import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import Account from "./components/Account";
@@ -25,6 +26,7 @@ function App() {
                 <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>  
                 <Navbar/>
                   <Route path="/quiz" exact component={Quiz}/>
+                  <Route path="/study/top" exact component={StudyTop}/>
                   <Route path="/study" exact component={Study}/>
                   <Route path="/create/custom_flashcard" exact component={CreateCustomFlashCard}/>
                   <Route path="/create/flashcard" exact component={CreateFlashCard}/>

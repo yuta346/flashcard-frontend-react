@@ -12,7 +12,7 @@ const FlashCard =(props) =>{
     return (<div className="flashCard">
                 {flip ? <FlashCardFront word={word} definition={definition} example={example}/>
                         :
-                        <FlashCardBack word={word} short_definition={short_definition} choices={choices}/>
+                        <FlashCardBack word={word} short_definition={short_definition} choices={choices} type={type}/>
                 }
                 <div className="flashCard-bottom">
                     {type == "quiz" ?<p style={{height:"20px"}}></p>:<p onClick={()=> setFlip(!flip)}>CLICK TO SEE MEANING</p>}

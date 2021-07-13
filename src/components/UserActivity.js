@@ -21,7 +21,6 @@ const UserActivity = () =>{
         }
     }
 
-
     return (<div>
             <PieChart width={730} height={250}>
             <Pie data={userActivity} dataKey="value" cx="50%" cy="50%" outerRadius={100} fill="#82ca9d" label/>

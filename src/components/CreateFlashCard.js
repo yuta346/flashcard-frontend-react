@@ -67,18 +67,19 @@ const CreateFlashCard = () =>{
 
 
     return (<div className="create-flashcard-container">
-                {/* <h1 style={{width:"100%"}}>Create A Card</h1> */}
+                <h1 style={{width:"100%"}}>Create A Flashard</h1>
                 <div className="create-flashcard-left-container">
                     <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
                         <div>
                             <div>
-                                <p style={{fontSize:"1.3rem"}}>Word</p>
+                                <p style={{fontSize:"1.3rem", marginBottom:"5px"}}>Word</p>
                                 <TextField 
                                     onChange={userInputHandler}
                                     style={{width:"100%"}}
                                     id="outlined-basic" 
                                     variant="outlined" 
                                     name="word"
+                                    label="Type a word..."
                                 />
                             </div>
                             <div className="create-flashcard-button-container">

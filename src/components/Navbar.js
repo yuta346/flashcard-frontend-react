@@ -96,8 +96,8 @@ const Navbar = () => {
                             Quiz
                           </MenuItem>
                           <MenuItem onClick={handleClose} 
-                                    label="Study" 
-                                    component={Link} to="/study"
+                                    label="StudyTop" 
+                                    component={Link} to="/study/top"
                           >
                             Study
                           </MenuItem>
