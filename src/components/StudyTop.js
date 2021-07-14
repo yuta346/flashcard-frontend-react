@@ -25,9 +25,9 @@ const StudyTop = () =>{
     }
     
     return (<div>
+    <h1>Create a study deck</h1>
     <div style={{textAlign:"center",marginTop:"30px"}}>
                     <TextField
-                        // style={{}}
                         onChange={userInputHandler}
                         id="outlined-number"
                         defaultValue="0"

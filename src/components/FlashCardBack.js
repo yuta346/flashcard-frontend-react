@@ -59,7 +59,7 @@ const FlashCardBack = ({word, short_definition,choices, type}) => {
                 </div>     
                 <form onSubmit={handleSubmit}>
                     <FormControl component="fieldset" error={error} className={classes.formControl}>
-                        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange} style={type =="quiz" ?{marginTop:"40px"}:null}>
+                        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange} style={type =="quiz" ?{marginTop:"30px"}:null}>
                         <FormControlLabel value={choices[0]} control={<Radio color="secondary"/>} label={choices[0]} />
                         <FormControlLabel value={choices[1]} control={<Radio color="secondary"/>} label={choices[1]} />
                         <FormControlLabel value={choices[2]} control={<Radio color="secondary"/>} label={choices[2]} />
@@ -67,9 +67,19 @@ const FlashCardBack = ({word, short_definition,choices, type}) => {
                         </RadioGroup>
                         {type =="quiz" ? null:<FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>}
                     </FormControl>
-                    {type =="quiz" ? null:<Button type="submit" variant="outlined" color="default" className={classes.button}>
-                        Check Answer
-                    </Button>}
+                    {type =="quiz" ? 
+                                        <Button type="submit" 
+                                                variant="outlined" 
+                                                color="default" 
+                                                className={classes.button}>
+                                        Submit Answer
+                                        </Button>
+                                    :   <Button type="submit" 
+                                                variant="outlined" 
+                                                color="default" 
+                                                className={classes.button}>
+                                        Check Answer
+                                        </Button>}
                 </form>
             </div>  
     )
