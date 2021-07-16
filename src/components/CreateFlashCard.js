@@ -68,11 +68,10 @@ const CreateFlashCard = () =>{
 
     return (<div className="create-flashcard-container">
                 <h1 style={{width:"100%"}}>Create A Flashard</h1>
-                <div className="create-flashcard-left-container">
                     <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
                         <div>
                             <div>
-                                <p style={{fontSize:"1.3rem", marginBottom:"5px"}}>Word</p>
+                                <p style={{fontSize:"1.3rem", margin:"0 0 8px 3px"}}>Word</p>
                                 <TextField 
                                     onChange={userInputHandler}
                                     style={{width:"100%"}}
@@ -84,18 +83,11 @@ const CreateFlashCard = () =>{
                             </div>
                             <div className="create-flashcard-button-container">
                                 {! searchStatus ? <p>{wordNotFoundMessage}</p>:null}
-                                <Button 
-                                    onClick={submitWordHandler}
-                                    style={{backgroundColor:"#007EA7", color:"#FFFF", width:"30%", marginTop:"20px"}}
-                                    variant="contained">
-                                    Search
-                                </Button>
+                                <button className="create-flashcard-btn" onClick={submitWordHandler}>SEARCH</button>
                             </div>
                         </div>   
                     </form>  
-                </div>
 
-                <div className="create-flashcard-right-container">
                 <FormControl component="fieldset" style={{marginTop:"30px"}}>
                     <FormLabel component="legend" style={{marginBottom:"10px", fontSize:"1.3rem"}}>Choose a definition</FormLabel>
                     <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>
@@ -110,14 +102,8 @@ const CreateFlashCard = () =>{
                     </RadioGroup>
                     </FormControl>
                     <div className="create-flashcard-button-container">
-                        <Button 
-                            onClick={submitHandler}
-                            style={{backgroundColor:"#007EA7", color:"#FFFF", width:"30%", marginTop:"20px"}}
-                            variant="contained">
-                            Create
-                        </Button>
+                        <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
                     </div>
-                </div>
                 
                    
                

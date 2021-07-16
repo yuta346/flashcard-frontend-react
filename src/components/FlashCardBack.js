@@ -5,8 +5,8 @@ const FlashCardBack = ({word, definition, example}) =>{
                 <div className="flashCard-top"/>
                 <div className="flashCard-middle">
                     <p className="flashCard-word">{word}</p>
-                    <p><span className="flashCard-definition">Definition: </span>{definition}</p>
-                    <p><span className="flashCard-p">Usage: </span>{example ? example:"Not Available"}</p>
+                    <p className="flashCard-definition"><span className="flashCard-span">Definition: </span>{definition}</p>
+                    <p className="flashCard-example"><span className="flashCard-span">Usage: </span>{example ? example:"Not Available"}</p>
                 </div>
             </div>)
 }

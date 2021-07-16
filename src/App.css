@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin:0;
   padding:0;
-  fontFamily:"Helvetica Neue", Helvetica, Arial
+  fontFamily:Helvetica, Arial
 }
 .app-bar{
   background-color: #0F5298;
@@ -121,7 +121,7 @@
 }
 
 .flashCard-bottom{
-  padding: 12px;
+  padding: 14px;
   position: absolute;
   background-color:#0F5298;
   width: 100%;
@@ -143,17 +143,22 @@
 }
 
 .flashCard-definition{
+  margin:50px 0 10px 0;
+
+}
+
+.flashCard-span{
   font-weight: bold;
   color:#0F5298;
 }
 
-.flashCard-p{
+.flashCard-example{
   color:#0F5298;
 }
 
 .forward-icon {
   position: absolute;
-  top: 45%;
+  top: 43%;
   right: 360px;
   cursor: pointer;
   user-select: none;
@@ -181,17 +186,10 @@
 }
 
 .create-flashcard-container h1{
+  font-family: Helvetica, Arial;
   margin: 40px 0 10px 0;
 }
 
-.create-flashcard-top-container{
-  display:flex;
-}
-
-.create-flashcard-top-container p{
-  margin:30px 0 10px 0;
-  font-size:1.2rem;
-}
 
 .create-flashcard-container h1{
   text-align: center;
@@ -202,14 +200,6 @@
   font-size:1.2rem;
 }
 
-.create-flashcard-bottom-container{
-  margin-top:10px;
-}
-
-.create-flashcard-bottom-container p{
-  margin-top:10px;
-  font-size:1.2rem;
-}
 
 .create-flashcard-button-container{
   margin:20px 0 20px 0;
@@ -244,7 +234,6 @@
 .create-flashcard-btn:active{
   background-color: #91cff6;
 }
-
 
 
 .study-top-container{
@@ -302,6 +291,75 @@
   background-color: #91cff6;
 }
 
+.study-exit-container{
+  margin-top:100px;
+  /* border: blue solid 2px; */
+  text-align: center;
+}
+
+.study-exit-title{
+  margin: 50px auto;
+  font-size:2.5rem;
+}
+
+.study-exit-continue{
+  display: inline-block;
+  text-align:center;
+  /* border: red solid 2px; */
+  width:25%;
+  height: 150px;
+  margin-right:20px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.study-exit-continue p{
+  margin:25px 0 20px 0;
+  font-size:1.5rem;
+}
+
+.study-exit-continue-btn{
+  border: none;
+  border-radius: 5px;
+  background-color: #24a0ed;
+  color:#FFFF;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height:42px;
+  width:80%;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.study-exit-quiz{
+  display: inline-block;
+  text-align:center;
+  /* border: red solid 2px; */
+  width:25%;
+  height: 150px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.study-exit-quiz p{
+  margin:25px 0 20px 0;
+  font-size:1.5rem;
+}
+
+.study-exit-quiz-btn{
+  border: none;
+  border-radius: 5px;
+  background-color: #24a0ed;
+  color:#FFFF;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height:42px;
+  width:80%;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+}
 
 .chart-container{
   margin:auto;

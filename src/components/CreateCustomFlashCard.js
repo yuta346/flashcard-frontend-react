@@ -74,7 +74,7 @@ const CreateCustomFlashCard = () =>{
                             name="usage"
                         />
                         <div className="create-flashcard-button-container">
-                            <button className="create-flashcard-btn" onClick={submitHandler}>CREATE!</button>
+                            <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
                         </div>
                     </div>   
                 </form>       
