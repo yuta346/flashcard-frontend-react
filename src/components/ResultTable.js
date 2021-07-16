@@ -73,7 +73,7 @@ const ResultTable = () =>{
                   </TableCell>
                   <TableCell style={{fontSize:"1rem"}} align="left">{row.definition}</TableCell>
                   <TableCell style={{fontSize:"1rem"}} align="left">{row.example ? row.example : "Not Available"}</TableCell>
-                  <TableCell style={{fontSize:"1rem"}} align="right">{row.result}</TableCell>
+                  <TableCell style={row.result=="Wrong" ? {fontSize:"1rem",color:"#FC100D"} : {fontSize:"1rem",color:"#42ba96"}} align="right">{row.result}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -8,11 +8,13 @@ const FlashCard =(props) =>{
 
     const {word, definition, short_definition, example, choices, type} = props.flashCard;
     const [flip, setFlip] = useState(false);
+    const nextFlashCard = () => {props.nextFlashCard()}
+
     
     return (<div className="flashCard">
-                {flip ? <FlashCardFront word={word} definition={definition} example={example}/>
+                {flip ? <FlashCardBack word={word} definition={definition} example={example}/>
                         :
-                        <FlashCardBack word={word} short_definition={short_definition} choices={choices} type={type}/>
+                        <FlashCardFront word={word} short_definition={short_definition} choices={choices} type={type} nextFlashCard={nextFlashCard}/>
                 }
                 <div className="flashCard-bottom">
                     {type == "quiz" ?<p style={{height:"20px"}}></p>:<p onClick={()=> setFlip(!flip)}>CLICK TO SEE MEANING</p>}

@@ -8,10 +8,12 @@ import Signup from "./components/Singup";
 import Quiz from "./components/Quiz";
 import Study from "./components/Study";
 import StudyTop from "./components/StudyTop";
+import StudyExit from "./components/StudyExit"
 import CreateFlashCard from "./components/CreateFlashCard";
 import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import Account from "./components/Account";
 import ResultTable from "./components/ResultTable"
+import QuizResultTable from "./components/QuizResultTable";
 import {AuthContext} from "./AuthContext";
 
 
@@ -28,10 +30,12 @@ function App() {
                   <Route path="/quiz" exact component={Quiz}/>
                   <Route path="/study/top" exact component={StudyTop}/>
                   <Route path="/study" exact component={Study}/>
+                  <Route path="/study/exit" exact component={StudyExit}/>
                   <Route path="/create/custom_flashcard" exact component={CreateCustomFlashCard}/>
                   <Route path="/create/flashcard" exact component={CreateFlashCard}/>
                   <Route path="/account" exact component={Account}/>
-                  <Route path="/result_table" exact component={ResultTable}/>
+                  <Route path="/quiz/result" exact component={ResultTable}/>
+                  {/* <Route path="/quiz/result" exact component={QuizResultTable}/> */}
                   </AuthContext.Provider>
             </Switch>
             </Router>

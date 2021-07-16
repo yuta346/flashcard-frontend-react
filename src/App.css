@@ -2,10 +2,12 @@
   box-sizing: border-box;
   margin:0;
   padding:0;
+  fontFamily:"Helvetica Neue", Helvetica, Arial
 }
 .app-bar{
   background-color: #0F5298;
 }
+
 
 .signup-page{
   width:100%;
@@ -106,7 +108,7 @@
 
 .flashCard-top {
   border-radius: 25px 25px 0 0;
-  height: 40px;
+  height: 42px;
   width: 100%;
   background-color: #0F5298;
   position: absolute;
@@ -151,7 +153,7 @@
 
 .forward-icon {
   position: absolute;
-  top: 50%;
+  top: 45%;
   right: 360px;
   cursor: pointer;
   user-select: none;
@@ -178,8 +180,17 @@
     text-align: left;
 }
 
+.create-flashcard-container h1{
+  margin: 40px 0 10px 0;
+}
+
 .create-flashcard-top-container{
   display:flex;
+}
+
+.create-flashcard-top-container p{
+  margin:30px 0 10px 0;
+  font-size:1.2rem;
 }
 
 .create-flashcard-container h1{
@@ -188,11 +199,112 @@
 
 .create-flashcard-container p{
   color:#0F5298;
+  font-size:1.2rem;
 }
 
+.create-flashcard-bottom-container{
+  margin-top:10px;
+}
+
+.create-flashcard-bottom-container p{
+  margin-top:10px;
+  font-size:1.2rem;
+}
 
 .create-flashcard-button-container{
   margin:20px 0 20px 0;
   text-align: center;
 }
 
+.part-of-speech{
+  margin-left:10px;
+}
+
+.part-of-speech-dropdown{
+  width:200px;
+  height:55px;
+  font-size:1rem;
+}
+
+.create-flashcard-btn{
+  border: none;
+  border-radius: 5px;
+  background-color: #24a0ed;
+  color:#FFFF;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height:42px;
+  width:30%;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.create-flashcard-btn:active{
+  background-color: #91cff6;
+}
+
+
+
+.study-top-container{
+  width:40%;
+  height:500px;
+  border-radius:20px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  background-color: #FFFF;
+  box-shadow: 0 2px 5px #ccc;
+  margin:100px auto;
+}
+
+.study-top-container p{
+  margin-top:80px;
+  font-size:2.5rem;
+  font-weight:bold;
+  text-align:center;
+}
+
+.generate-label{
+  font-size:1.5rem;
+}
+
+.generate-input{
+  width:20%;
+  height:40px;
+  font-size:1.2rem;
+  margin-top:25px;
+}
+
+.generate-btn{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  font-size:24px;
+  background-color: #24a0ed;
+  font-weight: bold;
+  color: #FFFF;
+  border:none;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: .6s;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  margin-top:15px;
+}
+
+.generate-btn:active{
+  background-color: #91cff6;
+}
+
+
+.chart-container{
+  margin:auto;
+  display:flex;
+  width:80%;
+}

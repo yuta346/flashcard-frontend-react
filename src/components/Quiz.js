@@ -29,7 +29,8 @@ const Quiz = () =>{
         if(current === length -1){
             axios.post('http://127.0.0.1:5000/api/update_activitiy', 
                         {"session_id":sessionStorage.getItem("session_id"), "isMastered":JSON.parse(sessionStorage.getItem("isMastered"))})
-            history.push({pathname:"/result_table", state:flashCards})
+            // history.push({pathname:"/result_table", state:flashCards})
+            history.push({pathname:"/quiz/result", state:flashCards})
         }
         setCurrent(current + 1);
     }
@@ -46,6 +47,7 @@ const Quiz = () =>{
                                                 key={index}
                                                 index={index} 
                                                 flashCard={flashCard} 
+                                                nextFlashCard={nextFlashCard}
                                               />}
                                 </div>)
                         })

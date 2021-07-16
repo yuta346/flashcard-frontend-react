@@ -15,15 +15,18 @@ import MenuList from '@material-ui/core/MenuList';
 
 const useStyles = makeStyles(theme => ({
     root:{
-        backgroundColor:"#0F5298",
-        
+        // backgroundColor:"#0F5298",
+      background: 'linear-gradient(45deg, #0F5298 30%, #0d8aee 100%)',
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(3),
     },
     title: {
       flexGrow: 1,
-    }
+      marginLeft:30,
+      fontSize:"1.4rem",
+      fontFamily:"Helvetica Neue"
+    },
   }));
   
 
@@ -77,6 +80,7 @@ const Navbar = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="inherit" 
+                style={{fontSize:"1rem", fontFamily:"Helvetica Neue"}}
               >
                 FLASHCARDS
               </Button>
@@ -86,21 +90,26 @@ const Navbar = () => {
                     {...TransitionProps}
                     style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                   >
-                    <Paper>
+                    <Paper style={{marginLeft:"240px"}}>
                       <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                          <MenuItem onClick={handleClose} 
-                                    label="Quiz" 
-                                    component={Link} to="/quiz"
-                          >
-                            Quiz
-                          </MenuItem>
+                        <MenuList autoFocusItem={open} 
+                                  id="menu-list-grow" 
+                                  onKeyDown={handleListKeyDown}
+                                  style={{fontSize:"2rem"}}
+                        >
                           <MenuItem onClick={handleClose} 
                                     label="StudyTop" 
                                     component={Link} to="/study/top"
                           >
                             Study
                           </MenuItem>
+                          <MenuItem onClick={handleClose} 
+                                    label="Quiz" 
+                                    component={Link} to="/quiz"
+                          >
+                            Quiz
+                          </MenuItem>
+                          
                           <MenuItem onClick={handleClose} 
                                     label="CreateFlashCard" 
                                     component={Link} to="/create/custom_flashcard"
@@ -119,13 +128,40 @@ const Navbar = () => {
                   </Grow>
                 )}
               </Popper>
-              <Button color="inherit" label="Account" component={Link} to="/account">Account</Button>
-              <Button onClick={logout} color="inherit" label="Logout" component={Link} to="/">Logout</Button>
+              <Button color="inherit" 
+                      label="Account" 
+                      component={Link} 
+                      to="/account"　
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+              >
+                Dashboard
+              </Button>
+              <Button onClick={logout} 
+                      color="inherit" 
+                      label="Logout" 
+                      component={Link} 
+                      to="/" 
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+              >
+                Logout
+              </Button>
               </div>
               :
             <div>
-              <Button color="inherit" label="Signup" component={Link} to="/signup">Sign up</Button>
-              <Button color="inherit" label="Login" component={Link} to="/login">Login</Button>
+              <Button color="inherit" 
+                      label="Signup" 
+                      component={Link} 
+                      to="/signup"
+              >
+                Sign up
+              </Button>
+              <Button color="inherit" 
+                      label="Login" 
+                      component={Link} 
+                      to="/login"　
+              >
+                Login
+              </Button>
             </div>}
           </Toolbar>
     </AppBar>

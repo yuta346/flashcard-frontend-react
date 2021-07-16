@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const StudyTop = () =>{
 
-    const [numCards, setNumCards] = useState(20)
+    const [numCards, setNumCards] = useState(0)
     const [flashCards, setFlashCards] = useState([]);
     const history = useHistory()
 
@@ -16,39 +16,25 @@ const StudyTop = () =>{
         setNumCards(e.target.value)
     }
 
-    const generateFlashCards = async () => {
-        const response = await axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
-        setFlashCards(response.data.word_list)
-        history.push('/study')
-        
-
+    const generateFlashCards = () => {
+        if(numCards === 0){
+            history.push({ pathname:'/study/top'})
+        }else{
+             history.push({ pathname:'/study',state:{numCards:numCards}})
+        }
     }
     
-    return (<div>
-    <h1>Create a study deck</h1>
-    <div style={{textAlign:"center",marginTop:"30px"}}>
-                    <TextField
-                        onChange={userInputHandler}
-                        id="outlined-number"
-                        defaultValue="0"
-                        label="Number of questions"
-                        type="number"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        inputProps={{ min: 0}}
-                        variant="outlined"
-                    />
+    return (<div className="study-top-container">
+                <p>Create a study deck!</p>
+                <div style={{textAlign:"center",marginTop:"30px"}}>
+                    <label className="generate-label" for="quantity">Enter Number of Questions</label>
+                    <br/>
+                    <input  className="generate-input" onChange={userInputHandler} type="number" id="quantity" name="quantity" min="1"/>
                     <div className="create-flashcard-button-container">
-                            <Button 
-                                onClick={generateFlashCards}
-                                style={{backgroundColor:"#007EA7", color:"#FFFF"}}
-                                variant="contained">
-                                Generate
-                            </Button>
-                        </div>
+                        <button className="generate-btn" onClick={generateFlashCards}>Create!</button>
+                    </div>
                 </div>
-</div>)
+            </div>)
 }
 
 export default StudyTop;
