@@ -56,7 +56,7 @@ const CreateCustomFlashCard = () =>{
                         <p>Definition(Optional)</p>
                         <TextField
                             onChange={userInputHandler}
-                            style={{width:"100%", marginTop:"10px"}}
+                            style={{width:"100%"}}
                             id="outlined-multiline-static"
                             multiline
                             rows={4}
@@ -66,7 +66,7 @@ const CreateCustomFlashCard = () =>{
                         <p>Example Sentence (Optional) </p>
                         <TextField
                             onChange={userInputHandler}
-                            style={{width:"100%", marginTop:"10px"}}
+                            style={{width:"100%"}}
                             id="outlined-multiline-static"
                             multiline
                             rows={4}

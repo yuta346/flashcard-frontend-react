@@ -80,7 +80,7 @@ const Navbar = () => {
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="inherit" 
-                style={{fontSize:"1rem", fontFamily:"Helvetica Neue"}}
+                style={{fontSize:"1rem", fontFamily:"Helvetica Neue", marginRight:5}}
               >
                 FLASHCARDS
               </Button>
@@ -132,7 +132,7 @@ const Navbar = () => {
                       label="Account" 
                       component={Link} 
                       to="/account"　
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
               >
                 Dashboard
               </Button>
@@ -141,7 +141,7 @@ const Navbar = () => {
                       label="Logout" 
                       component={Link} 
                       to="/" 
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
               >
                 Logout
               </Button>
@@ -152,6 +152,7 @@ const Navbar = () => {
                       label="Signup" 
                       component={Link} 
                       to="/signup"
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
               >
                 Sign up
               </Button>
@@ -159,6 +160,7 @@ const Navbar = () => {
                       label="Login" 
                       component={Link} 
                       to="/login"　
+                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:10}}
               >
                 Login
               </Button>

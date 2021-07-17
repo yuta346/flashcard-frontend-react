@@ -46,7 +46,7 @@ function App() {
                 <Switch>
                   <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}> 
                   <Navbar/>
-                    <Route path="/" exact component={Landing}/>
+                    <Route path="/" exact component={Signup}/>
                     <Route path="/login" exact component={Login}/>
                     <Route path="/signup" exact component={Signup}/>
                   </AuthContext.Provider>

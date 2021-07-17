@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +8,7 @@ const Login = () => {
 
     const {auth, setAuth} = useContext(AuthContext);
     const [userInput, setUserInput] = useState({"username":"","password":""})
+    const [helperMessage, setHelperMessage] = useState("")
     const history = useHistory();
 
     const inputHandler = (e) => {
@@ -18,18 +19,22 @@ const Login = () => {
     const submitHandler = async (e) => {
         const response = await axios.post('http://127.0.0.1:5000/api/login', userInput);
         const userData = response.data
+        console.log(userData)
         if (userData.status === "success"){
             sessionStorage.setItem("session_id", userData.session_id)
             setAuth(sessionStorage.getItem("session_id"))
             history.push("/account");
+        }else{
+            setHelperMessage("Invalid credentials")
+            history.push("/login");
         }
     }
 
     return (<div className="login-page">
-    <div className="form-container">
+    <div className="form-container-login">
         <div className={"form"}>
-        <h1 className="login-title">Log In</h1>
-            <div>
+        <h1 className="login-title">Login</h1>
+            <div className="form-container-input">
                 <TextField
                     onChange={inputHandler} 
                     name = "username" 
@@ -40,7 +45,7 @@ const Login = () => {
                     style = {{width: "100%"}}
                 />
             </div>
-            <div>
+            <div className="form-container-input">
                 <TextField
                     onChange={inputHandler} 
                     name = "password"
@@ -53,6 +58,8 @@ const Login = () => {
                 />
             </div>
             <button className="login-btn" onClick={submitHandler}>Login</button>
+            <p style={{margin:"18px 0 10px 0", color:"#F32013"}}>{helperMessage}</p>
+            <p style={{margin:"20px 0 10px 0"}}>Do you have an account yet?  <Link style={{textDecoration:"none"}} to="signup">Signup</Link></p>
         </div>
     </div>
     </div>) 
