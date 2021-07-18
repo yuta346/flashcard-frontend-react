@@ -14,6 +14,7 @@ import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import Account from "./components/Account";
 import ResultTable from "./components/ResultTable"
 import QuizResultTable from "./components/QuizResultTable";
+import PendingWords from "./components/PendingWords"
 import {AuthContext} from "./AuthContext";
 
 
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/create/flashcard" exact component={CreateFlashCard}/>
                   <Route path="/account" exact component={Account}/>
                   <Route path="/quiz/result" exact component={ResultTable}/>
+                  <Route path="/pending/words" exact component={PendingWords}/>
                   {/* <Route path="/quiz/result" exact component={QuizResultTable}/> */}
                   </AuthContext.Provider>
             </Switch>

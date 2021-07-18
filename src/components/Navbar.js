@@ -11,7 +11,9 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles(theme => ({
     root:{
@@ -27,6 +29,9 @@ const useStyles = makeStyles(theme => ({
       fontSize:"1.4rem",
       fontFamily:"Helvetica Neue"
     },
+    NotificationsNoneIcon:{
+     color: 'inherit',
+    }
   }));
   
 
@@ -73,97 +78,111 @@ const Navbar = () => {
     <AppBar position="static" className={classes.root}>
         <Toolbar>
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
-            {auth? <div>
-              <Button
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-                color="inherit" 
-                style={{fontSize:"1rem", fontFamily:"Helvetica Neue", marginRight:5}}
-              >
-                FLASHCARDS
-              </Button>
-              <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            {auth? 
+                <div>
+
+                  <Button color="inherit" 
+                          label="Account" 
+                          component={Link} 
+                          to="/account"　
+                          style={{fontSize:"1rem",fontFamily:"Helvetica Neue",marginRight:"5px"}}
                   >
-                    <Paper style={{marginLeft:"240px"}}>
-                      <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList autoFocusItem={open} 
-                                  id="menu-list-grow" 
-                                  onKeyDown={handleListKeyDown}
-                                  style={{fontSize:"2rem"}}
-                        >
-                          <MenuItem onClick={handleClose} 
-                                    label="StudyTop" 
-                                    component={Link} to="/study/top"
-                          >
-                            Study
-                          </MenuItem>
-                          <MenuItem onClick={handleClose} 
-                                    label="Quiz" 
-                                    component={Link} to="/quiz"
-                          >
-                            Quiz
-                          </MenuItem>
-                          
-                          <MenuItem onClick={handleClose} 
-                                    label="CreateFlashCard" 
-                                    component={Link} to="/create/custom_flashcard"
-                          >
-                           Create Custom Flash Card
-                          </MenuItem>
-                          <MenuItem onClick={handleClose} 
-                                    label="CreateFlashCard" 
-                                    component={Link} to="/create/flashcard"
-                          >
-                           Create Flash Card
-                          </MenuItem>
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-              <Button color="inherit" 
-                      label="Account" 
-                      component={Link} 
-                      to="/account"　
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
-              >
-                Dashboard
-              </Button>
-              <Button onClick={logout} 
-                      color="inherit" 
-                      label="Logout" 
-                      component={Link} 
-                      to="/" 
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
-              >
-                Logout
-              </Button>
-              </div>
-              :
-            <div>
-              <Button color="inherit" 
-                      label="Signup" 
-                      component={Link} 
-                      to="/signup"
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:5}}
-              >
-                Sign up
-              </Button>
-              <Button color="inherit" 
-                      label="Login" 
-                      component={Link} 
-                      to="/login"　
-                      style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:10}}
-              >
-                Login
-              </Button>
+                    Dashboard
+                  </Button>
+
+                  <Button
+                    ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle}
+                    color="inherit" 
+                    style={{fontSize:"1rem", fontFamily:"Helvetica Neue"}}
+                  >
+                    FLASHCARDS
+                  </Button>
+                  <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                      >
+                        <Paper style={{marginLeft:"200px"}}>
+                          <ClickAwayListener onClickAway={handleClose}>
+                            <MenuList autoFocusItem={open} 
+                                      id="menu-list-grow" 
+                                      onKeyDown={handleListKeyDown}
+                                      style={{fontSize:"2rem"}}
+                            >
+                              <MenuItem onClick={handleClose} 
+                                        label="StudyTop" 
+                                        component={Link} to="/study/top"
+                              >
+                                Study
+                              </MenuItem>
+                              <MenuItem onClick={handleClose} 
+                                        label="Quiz" 
+                                        component={Link} to="/quiz"
+                              >
+                                Quiz
+                              </MenuItem>
+                              
+                              <MenuItem onClick={handleClose} 
+                                        label="CreateFlashCard" 
+                                        component={Link} to="/create/custom_flashcard"
+                              >
+                              Create Custom Flash Card
+                              </MenuItem>
+                              <MenuItem onClick={handleClose} 
+                                        label="CreateFlashCard" 
+                                        component={Link} to="/create/flashcard"
+                              >
+                              Create Flash Card
+                              </MenuItem>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
+
+                  <IconButton 
+                              color="inherit"
+                              component={Link}  
+                              to="/pending/words"  
+                  >
+                    {/* <Badge badgeContent={} color="secondary"> */}
+                      <NotificationsIcon />
+                    {/* </Badge> */}
+                  </IconButton>
+                
+                  <Button onClick={logout} 
+                          color="inherit" 
+                          label="Logout" 
+                          component={Link} 
+                          to="/" 
+                          style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+                  >
+                    Logout
+                  </Button>
+                  </div>
+                  :
+                <div>
+                  <Button color="inherit" 
+                          label="Signup" 
+                          component={Link} 
+                          to="/signup"
+                          style={{fontSize:"1rem",fontFamily:"Helvetica Neue"}}
+                  >
+                    Sign up
+                  </Button>
+                  <Button color="inherit" 
+                          label="Login" 
+                          component={Link} 
+                          to="/login"　
+                          style={{fontSize:"1rem",fontFamily:"Helvetica Neue", marginRight:10}}
+                  >
+                    Login
+                  </Button>
             </div>}
           </Toolbar>
     </AppBar>

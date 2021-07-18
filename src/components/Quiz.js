@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom"
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCard from "./FlashCard"
+import NoFlashCards from "./NoFlashCards"
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -39,8 +40,8 @@ const Quiz = () =>{
     return (<div>
                 <div className="slider">
                 {/* <h1 style={{textAlign:"center"}}>{current+1}/{length}</h1> */}
-                    {auth && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
-                    {flashCards.map((flashCard, index) => {
+                    {flashCards.length > 0 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
+                    { flashCards.length > 0 ? flashCards.map((flashCard, index) => {
                         flashCard["type"] = "quiz"
                         return (<div>
                         {index === current && <FlashCard 
@@ -51,7 +52,10 @@ const Quiz = () =>{
                                               />}
                                 </div>)
                         })
+                        :
+                       <NoFlashCards/>
                     }
+                    
                 </div>
             </div>)
 

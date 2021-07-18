@@ -4,7 +4,6 @@ import ActivityLineChart from "./ActivityLineChart"
 import ActivityWordsTable from "./ActivityWordsTable";
 import axios from "axios"
 
-
 const Account = () =>{
 
     const [userWords, setUserWords] = useState([])

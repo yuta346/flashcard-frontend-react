@@ -3,6 +3,7 @@ import { useHistory, useLocation } from "react-router";
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCardStudy from "./FlashCard"
+import NoFlashCards from "./NoFlashCards"
 import TextField from '@material-ui/core/TextField';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -49,7 +50,7 @@ const Study = () => {
     return (<div>
             <div className="slider">
                     {flashCards.length > 0 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
-                    {flashCards.map((flashCard, index) => {
+                    {flashCards.length > 0 ? flashCards.map((flashCard, index) => {
                         flashCard["type"] = "study"
                         return (<div>
                         {index === current && <FlashCardStudy
@@ -60,6 +61,8 @@ const Study = () => {
                                         />}
                                 </div>)
                         })
+                        :
+                         <NoFlashCards/>
                     }
             </div>
             </div>)

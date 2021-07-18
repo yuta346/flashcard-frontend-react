@@ -7,7 +7,7 @@ const ActivityLineChart = ({activiyTimeSeries}) =>{
             <LineChart width={650} 
                        height={250} 
                        data={activiyTimeSeries}
-                       margin={{ top: 0, right: 10, left: 45, bottom: 5 }}
+                       margin={{ top: 10, right: 10, left: 45, bottom: 5 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />

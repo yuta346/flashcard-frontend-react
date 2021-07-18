@@ -203,8 +203,9 @@
 
 .create-flashcard-container h1{
   font-family: Helvetica, Arial;
-  margin:50px;
+  margin:50px 0 50px 0;
   text-align: center;
+  font-size:2.2rem;
 }
 
 .create-flashcard-container p{
@@ -380,4 +381,37 @@
   margin:auto;
   display:flex;
   width:80%;
+}
+
+.pending-add-btn{
+  border: none;
+  border-radius: 5px;
+  background-color: #24a0ed;
+  color:#FFFF;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height:42px;
+  width:30%;
+  margin: 10px auto;
+  text-align: center;
+  text-decoration: none;
+}
+
+.pending-add-btn:active{
+  background-color: #91cff6;
+}
+
+.no-flash-card{
+  text-align:center;
+}
+
+.no-flash-card h1{
+  margin-top:180px;
+  font-size:3rem;
+}
+
+.no-flash-card p{
+  margin-top:30px;
+  font-size:1.5rem;
 }
