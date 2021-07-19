@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
         root: {
             '& .super-app-theme--header': {
-            fontSize:"1.2rem"
+            fontSize:"1.2rem",
             },
         },
         });
@@ -35,15 +35,24 @@ const PendingWords = () =>{
         f()
     },[])
 
-    const addHandler = async () =>{
-        setStatusMessage(false)
-        const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0]})
-        const pending_words= response.data.pending_words
-        setPendingWords(pending_words)
+    const approveHandler = async () =>{
+        if(selected.length < 1 || selected == undefined){
+            return;
+        }else{
+            const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0],"pending_status":"approve"})
+            const pending_words= response.data.pending_words
+            setPendingWords(pending_words)
+        }
     }
 
-    const removeHandler = () =>{
-        
+    const declineHandler = async () =>{
+        if(selected.length < 1 || selected == undefined){
+            return;
+        }else{
+            const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0],"pending_status":"decline"})
+            const pending_words= response.data.pending_words
+            setPendingWords(pending_words)
+        }
     }
 
     return (
@@ -64,8 +73,18 @@ const PendingWords = () =>{
                         }}
                   className={classes.root}
         />
-        <button className="pending-add-btn"
-                onClick={addHandler}>APPROVE</button>
+            <div class="pending-btn-container">
+                <button className="pending-approve-btn"
+                        onClick={approveHandler}
+                >
+                    APPROVE
+                </button>
+                <button className="pending-decline-btn"
+                        onClick={declineHandler}
+                >
+                    DECLINE
+                </button>
+            </div>
         </div>
     </div>
   );

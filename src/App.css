@@ -383,7 +383,12 @@
   width:80%;
 }
 
-.pending-add-btn{
+.pending-btn-container{
+  display:flex;
+  justify-content:center;
+}
+
+.pending-approve-btn{
   border: none;
   border-radius: 5px;
   background-color: #24a0ed;
@@ -392,14 +397,33 @@
   font-size: 1.2rem;
   font-weight: bold;
   height:42px;
-  width:30%;
-  margin: 10px auto;
+  width:20%;
+  margin: 10px 5px;
   text-align: center;
   text-decoration: none;
 }
 
-.pending-add-btn:active{
+.pending-approve-btn:active{
   background-color: #91cff6;
+}
+
+.pending-decline-btn{
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color:#FFFF;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height:42px;
+  width:20%;
+  margin: 10px 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.pending-decline-btn:active{
+  background-color: #e77681;
 }
 
 .no-flash-card{

@@ -64,6 +64,7 @@ const Study = () => {
                         :
                          <NoFlashCards/>
                     }
+                    <p style={{textAlign:"center", marginTop:"10px"}}>{current+1} out of {length}</p>
             </div>
             </div>)
 

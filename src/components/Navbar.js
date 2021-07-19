@@ -14,6 +14,7 @@ import MenuList from '@material-ui/core/MenuList';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import logo from "../image/logo.png"
 
 const useStyles = makeStyles(theme => ({
     root:{
@@ -25,12 +26,16 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
       flexGrow: 1,
-      marginLeft:30,
+      marginLeft:5,
       fontSize:"1.4rem",
       fontFamily:"Helvetica Neue"
     },
     NotificationsNoneIcon:{
      color: 'inherit',
+    },
+    logo: {
+      maxWidth: 40,
+      marginLeft:20,
     }
   }));
   
@@ -77,10 +82,10 @@ const Navbar = () => {
     <div>
     <AppBar position="static" className={classes.root}>
         <Toolbar>
+            <img src={logo} className={classes.logo} />
             <Typography variant="h6" className={classes.title}>Flashcard App</Typography>
             {auth? 
                 <div>
-
                   <Button color="inherit" 
                           label="Account" 
                           component={Link} 
