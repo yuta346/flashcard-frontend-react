@@ -34,6 +34,8 @@ const FlashCardFront = (props) => {
     const nextFlashCard = () => {props.nextFlashCard()}
     sessionStorage.setItem("type", props.type)
 
+
+
     const handleRadioChange = (event) => {
         setValue(event.target.value);
         setHelperText(' ');
@@ -82,10 +84,11 @@ const FlashCardFront = (props) => {
                                     value={value} 
                                     onChange={handleRadioChange} 
                                     style={sessionStorage.getItem('type') =="quiz"  ?{marginTop:"30px"}:null}>
-                        <FormControlLabel value={choices[0]} control={<Radio color="secondary"/>} label={choices[0]} />
-                        <FormControlLabel value={choices[1]} control={<Radio color="secondary"/>} label={choices[1]} />
-                        <FormControlLabel value={choices[2]} control={<Radio color="secondary"/>} label={choices[2]} />
-                        <FormControlLabel value={choices[3]} control={<Radio color="secondary"/>} label={choices[3]} />
+         
+                        {(choices.length === 1 || choices.length > 1)  && <FormControlLabel value={choices[0]} control={<Radio color="secondary"/>} label={choices[0]} />}
+                        {(choices.length === 2 || choices.length > 2) && <FormControlLabel value={choices[1]} control={<Radio color="secondary"/>} label={choices[1]} />}
+                        {(choices.length === 3 || choices.length > 3) && <FormControlLabel value={choices[2]} control={<Radio color="secondary"/>} label={choices[2]} />}
+                        {(choices.length === 4 || choices.length > 4) &&<FormControlLabel value={choices[3]} control={<Radio color="secondary"/>} label={choices[3]} />}
                         </RadioGroup>
                         { sessionStorage.getItem('type') =="quiz" ? null:<FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>}
                     </FormControl>
