@@ -106,7 +106,7 @@ const Navbar = () => {
                         {...TransitionProps}
                         style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                       >
-                        <Paper style={{marginLeft:"200px"}}>
+                        <Paper style={{marginLeft:"160px"}}>
                           <ClickAwayListener onClickAway={handleClose}>
                             <MenuList autoFocusItem={open} 
                                       id="menu-list-grow" 

@@ -24,8 +24,6 @@ const PendingWords = () =>{
     { field: 'example', headerName: 'Example', width: 500, headerClassName: 'super-app-theme--header' },
     ];
 
-    console.log(statusMessage)
-
     const classes = useStyles();
 
     useEffect(()=>{
@@ -35,13 +33,13 @@ const PendingWords = () =>{
                 setPendingWords(pending_words)
         }
         f()
-    },[statusMessage])
+    },[])
 
     const addHandler = async () =>{
         setStatusMessage(false)
         const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0]})
-        const status = response.data.status
-        setStatusMessage(status)
+        const pending_words= response.data.pending_words
+        setPendingWords(pending_words)
     }
 
     const removeHandler = () =>{
@@ -50,12 +48,12 @@ const PendingWords = () =>{
 
     return (
     <div>
-        <h1 style={{ margin:"40px 0 0 146px"}}>Pending Words</h1>
-        <div style={{ height: 550, width: '80%', margin:"30px auto"}}>
+        <h1 style={{ margin:"60px 0 0 146px", fontSize:"2.2rem"}}>Pending Words</h1>
+        <div style={{ height: 550, width: '80%', margin:"60px auto"}}>
         <DataGrid rows={pendingWords} 
                   columns={columns} 
                   pageSize={10} 
-                  rowHeight={50}
+                  rowHeight={55}
                   checkboxSelection={true} 
                   onSelectionModelChange={(e) => {
                         const selectedIDs = new Set(e.selectionModel);
@@ -67,7 +65,7 @@ const PendingWords = () =>{
                   className={classes.root}
         />
         <button className="pending-add-btn"
-                onClick={addHandler}>Add</button>
+                onClick={addHandler}>APPROVE</button>
         </div>
     </div>
   );
