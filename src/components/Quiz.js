@@ -39,8 +39,8 @@ const Quiz = () =>{
 
     return (<div>
                 <div className="slider">
-                    {length > 0 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}}/>}
-                    { length > 0 ? flashCards.map((flashCard, index) => {
+                    {length > 4 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}}/>}
+                    { length > 4 ? flashCards.map((flashCard, index) => {
                         flashCard["type"] = "quiz"
                         return (<div>
                         {index === current && <FlashCard 
@@ -54,7 +54,7 @@ const Quiz = () =>{
                         :
                        <NoFlashCards/>
                     }
-                    <p style={{textAlign:"center", marginTop:"10px"}}>{current+1} out of {length}</p>
+                    {length > 4 &&<p style={{textAlign:"center", marginTop:"10px"}}>{current+1} out of {length}</p>}
                 </div>
             </div>)
 
