@@ -1,7 +1,7 @@
 
 import React, {useContext} from "react";
 import {Link} from "react-router-dom"
-import { AuthContext } from "../AuthContext";
+import { AuthContext, PendingContext } from "../AuthContext";
 import { AppBar, Toolbar, Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,6 @@ import logo from "../image/logo.png"
 
 const useStyles = makeStyles(theme => ({
     root:{
-        // backgroundColor:"#0F5298",
       background: 'linear-gradient(45deg, #0F5298 30%, #0d8aee 100%)',
     },
     menuButton: {
@@ -41,10 +40,14 @@ const useStyles = makeStyles(theme => ({
   
 
 const Navbar = () => {
+
   const {auth, setAuth} = useContext(AuthContext);
+  const {pendingLength} = useContext(PendingContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  console.log(pendingLength)
 
   const logout = () => {
     sessionStorage.removeItem("session_id")
@@ -103,7 +106,7 @@ const Navbar = () => {
                     color="inherit" 
                     style={{fontSize:"1rem", fontFamily:"Helvetica Neue"}}
                   >
-                    FLASHCARDS
+                    FLASHCARD
                   </Button>
                   <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                     {({ TransitionProps, placement }) => (
@@ -135,13 +138,13 @@ const Navbar = () => {
                                         label="CreateFlashCard" 
                                         component={Link} to="/create/custom_flashcard"
                               >
-                              Create Custom Flash Card
+                              Create Custom Flashcard
                               </MenuItem>
                               <MenuItem onClick={handleClose} 
                                         label="CreateFlashCard" 
                                         component={Link} to="/create/flashcard"
                               >
-                              Create Flash Card
+                              Create Flashcard
                               </MenuItem>
                             </MenuList>
                           </ClickAwayListener>
@@ -155,9 +158,9 @@ const Navbar = () => {
                               component={Link}  
                               to="/pending/words"  
                   >
-                    {/* <Badge badgeContent={} color="secondary"> */}
+                    <Badge badgeContent={pendingLength} color="secondary">
                       <NotificationsIcon />
-                    {/* </Badge> */}
+                    </Badge>
                   </IconButton>
                 
                   <Button onClick={logout} 

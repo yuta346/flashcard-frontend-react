@@ -1,12 +1,13 @@
 import React, {useState, useContext} from "react";
 import { useHistory, Link } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
+import { AuthContext, PendingContext } from "../AuthContext";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
 
-    const {auth, setAuth} = useContext(AuthContext);
+    const {setAuth} = useContext(AuthContext);
+    const {setPendingLength} = useContext(PendingContext)
     const [userInput, setUserInput] = useState({"username":"","password":""})
     const [helperMessage, setHelperMessage] = useState("")
     const history = useHistory();
@@ -23,6 +24,8 @@ const Login = () => {
         if (userData.status === "success"){
             sessionStorage.setItem("session_id", userData.session_id)
             setAuth(sessionStorage.getItem("session_id"))
+            sessionStorage.setItem("pending_length", userData.pending_words.length)
+            setPendingLength(sessionStorage.getItem("pending_length"))
             history.push("/account");
         }else{
             setHelperMessage("Invalid credentials")

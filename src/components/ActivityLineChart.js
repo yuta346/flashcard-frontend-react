@@ -4,7 +4,8 @@ import { LineChart, Line, YAxis, XAxis, CartesianGrid, Tooltip, Legend } from 'r
 const ActivityLineChart = ({activiyTimeSeries}) =>{
 
     activiyTimeSeries.forEach((activity) => {
-        activity["% of Correct Answers"] = Math.round(activity['Correct']/(activity['Correct'] + activity['Wrong']) * 100)
+        activity["Number of Question Attempted"] = activity["Correct"] +  activity["Wrong"]
+        activity["Percentage Correct"] = Math.round(activity["Correct"]/(activity["Correct"] + activity["Wrong"]) * 100)
     })
 
 
@@ -19,10 +20,11 @@ const ActivityLineChart = ({activiyTimeSeries}) =>{
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Legend />
+            <Legend align="right"/>
             <Line type="monotone" dataKey="Correct" stroke="#0088FE" />
             <Line type="monotone" dataKey="Wrong" stroke="#FF0000" />
-            <Line type="monotone" dataKey="% of Correct Answers" stroke="#00b252" />
+            <Line type="monotone" dataKey="Question Attempted" stroke="#ff8000" />
+            <Line type="monotone" dataKey="Percentage Correct" stroke="#00b252" />
         </LineChart>
         </div>
     )

@@ -27,14 +27,14 @@ const Study = () => {
         f() 
     },[])
 
-    // const userInputHandler = (e) => {
-    //     setNumCards(e.target.value)
-    // }
+    const userInputHandler = (e) => {
+        setNumCards(e.target.value)
+    }
 
-    // const generateFlashCards = async () => {
-    //     const response = await axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
-    //     setFlashCards(response.data.word_list)
-    // }
+    const generateFlashCards = async () => {
+        const response = await axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
+        setFlashCards(response.data.word_list)
+    }
     
     const nextFlashCard = () =>{
         if(current == length - 1){
@@ -43,7 +43,6 @@ const Study = () => {
         else{
             setCurrent(current + 1);
         }
-        // setCurrent(current === length -1 ? 0 : current + 1);
     }
 
 

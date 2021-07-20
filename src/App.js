@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import "./App.css";
-import Landing from "./components/Landing";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Singup";
@@ -14,19 +13,22 @@ import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import Account from "./components/Account";
 import ResultTable from "./components/ResultTable"
 import QuizResultTable from "./components/QuizResultTable";
-import PendingWords from "./components/PendingWords"
+import PendingWordsTable from "./components/PendingWordsTable"
 import {AuthContext} from "./AuthContext";
+import {PendingContext} from "./AuthContext";
 
 
 function App() {
 
   const [auth, setAuth] = useState(sessionStorage.getItem("session_id"))
+  const [pendingLength, setPendingLength] = useState(sessionStorage.getItem("pending_length"))
 
   if (auth){
     return (<div className="App">
               <Router>
               <Switch>
                 <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>  
+                <PendingContext.Provider value={{pendingLength:pendingLength, setPendingLength:setPendingLength}}>  
                 <Navbar/>
                   <Route path="/quiz" exact component={Quiz}/>
                   <Route path="/study/top" exact component={StudyTop}/>
@@ -36,8 +38,8 @@ function App() {
                   <Route path="/create/flashcard" exact component={CreateFlashCard}/>
                   <Route path="/account" exact component={Account}/>
                   <Route path="/quiz/result" exact component={ResultTable}/>
-                  <Route path="/pending/words" exact component={PendingWords}/>
-                  {/* <Route path="/quiz/result" exact component={QuizResultTable}/> */}
+                  <Route path="/pending/words" exact component={PendingWordsTable}/>
+                  </PendingContext.Provider>
                   </AuthContext.Provider>
             </Switch>
             </Router>

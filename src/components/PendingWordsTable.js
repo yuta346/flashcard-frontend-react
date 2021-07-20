@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useHistory} from "react-router-dom"
+import React, {useState, useEffect, useContext} from "react";
+import {PendingContext} from "../AuthContext";
 import axios from "axios"
 import { DataGrid } from '@material-ui/data-grid';
 import { makeStyles } from '@material-ui/styles';
@@ -16,8 +16,7 @@ const PendingWords = () =>{
 
     const [pendingWords, setPendingWords] = useState([])
     const [selected, setSelected] = useState([])
-    const [statusMessage, setStatusMessage] = useState("")
-    const history = useHistory()
+    const {setPendingLength} = useContext(PendingContext)
     const columns = [
     { field: 'word', headerName: 'Word', width: 130, headerClassName: 'super-app-theme--header' },
     { field: 'short_definition', headerName: 'Definition', width: 500, headerClassName: 'super-app-theme--header' },
@@ -42,6 +41,8 @@ const PendingWords = () =>{
             const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0],"pending_status":"approve"})
             const pending_words= response.data.pending_words
             setPendingWords(pending_words)
+            sessionStorage.setItem("pending_length", pending_words.length)
+            setPendingLength(sessionStorage.getItem("pending_length"))
         }
     }
 
@@ -52,6 +53,8 @@ const PendingWords = () =>{
             const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0],"pending_status":"decline"})
             const pending_words= response.data.pending_words
             setPendingWords(pending_words)
+            sessionStorage.setItem("pending_length", pending_words.length)
+            setPendingLength(sessionStorage.getItem("pending_length"))
         }
     }
 
