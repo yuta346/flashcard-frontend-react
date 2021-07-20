@@ -42,16 +42,22 @@ const useStyles = makeStyles(theme => ({
 const Navbar = () => {
 
   const {auth, setAuth} = useContext(AuthContext);
-  const {pendingLength} = useContext(PendingContext);
+  const {pendingLength, setPendingLength} = useContext(PendingContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
+  console.log("########")
+  console.log(auth)
   console.log(pendingLength)
+  console.log("########")
+
 
   const logout = () => {
     sessionStorage.removeItem("session_id")
+    sessionStorage.removeItem("pending_length")
     setAuth("")
+    setPendingLength("")
   }
 
   const handleToggle = () => {

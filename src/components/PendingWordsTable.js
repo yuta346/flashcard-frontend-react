@@ -9,6 +9,9 @@ const useStyles = makeStyles({
             '& .super-app-theme--header': {
             fontSize:"1.2rem",
             },
+            '& div[data-rowIndex][role="row"]': {
+                fontSize: "1rem",
+        }
         },
         });
 
@@ -67,6 +70,7 @@ const PendingWords = () =>{
                   pageSize={10} 
                   rowHeight={55}
                   checkboxSelection={true} 
+                  autoHeight {...pendingWords}
                   onSelectionModelChange={(e) => {
                         const selectedIDs = new Set(e.selectionModel);
                         const selectedRowData = pendingWords.filter((row) =>

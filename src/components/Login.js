@@ -8,6 +8,7 @@ const Login = () => {
 
     const {setAuth} = useContext(AuthContext);
     const {setPendingLength} = useContext(PendingContext)
+    console.log(setPendingLength)
     const [userInput, setUserInput] = useState({"username":"","password":""})
     const [helperMessage, setHelperMessage] = useState("")
     const history = useHistory();
@@ -19,14 +20,21 @@ const Login = () => {
 
     const submitHandler = async (e) => {
         const response = await axios.post('http://127.0.0.1:5000/api/login', userInput);
-        const userData = response.data
-        console.log(userData)
+        const userData = await response.data
         if (userData.status === "success"){
+
+            sessionStorage.setItem("pending_length", userData.pending_length)
+            setPendingLength(userData.pending_length)
+
             sessionStorage.setItem("session_id", userData.session_id)
-            setAuth(sessionStorage.getItem("session_id"))
-            sessionStorage.setItem("pending_length", userData.pending_words.length)
-            setPendingLength(sessionStorage.getItem("pending_length"))
+            setAuth(userData.session_id)
             history.push("/account");
+            // sessionStorage.setItem("pending_length", userData.pending_length)
+            // setPendingLength(userData.pending_length)
+            // setTimeout(()=>{
+            //     history.push("/account");
+            // }, 3000)
+            // 
         }else{
             setHelperMessage("Invalid credentials")
             history.push("/login");

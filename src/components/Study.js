@@ -4,10 +4,8 @@ import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCardStudy from "./FlashCard"
 import NoFlashCards from "./NoFlashCards"
-import TextField from '@material-ui/core/TextField';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import Button from '@material-ui/core/Button';
+import StudyFlashCardTable from "./StudyFlashCardTable"
 
 const Study = () => {
     const location = useLocation();
@@ -63,8 +61,9 @@ const Study = () => {
                         :
                          <NoFlashCards/>
                     }
-                    <p style={{textAlign:"center", marginTop:"10px"}}>{current+1} out of {length}</p>
+                    <p style={{textAlign:"center", marginTop:"10px"}}>Progress {current+1} of {length}</p>
             </div>
+            <StudyFlashCardTable flashCards={flashCards}/>
             </div>)
 
 

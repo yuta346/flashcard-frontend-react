@@ -7,6 +7,6 @@ export const AuthContext = createContext({
 
 
 export const PendingContext = createContext({
-    pendingLength: 0,
-    setPendingLength: ()=>{}
+    pendingLength: "",
+    setPendingLength: ()=>{console.log("pending function")}
 })

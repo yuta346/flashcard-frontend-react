@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import ActivityPieChart from "./ActivityPieChart";
 import ActivityLineChart from "./ActivityLineChart"
 import ActivityWordsTable from "./ActivityWordsTable";

@@ -21,15 +21,16 @@ import {PendingContext} from "./AuthContext";
 function App() {
 
   const [auth, setAuth] = useState(sessionStorage.getItem("session_id"))
-  const [pendingLength, setPendingLength] = useState(sessionStorage.getItem("pending_length"))
+  const [pendingLength, setPending] = useState(sessionStorage.getItem("pending_length"))
 
   if (auth){
     return (<div className="App">
               <Router>
               <Switch>
                 <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}>  
-                <PendingContext.Provider value={{pendingLength:pendingLength, setPendingLength:setPendingLength}}>  
+                <PendingContext.Provider value={{pendingLength: pendingLength, setPendingLength:setPending}}>  
                 <Navbar/>
+                  <Route path="/" exact component={Account}/>
                   <Route path="/quiz" exact component={Quiz}/>
                   <Route path="/study/top" exact component={StudyTop}/>
                   <Route path="/study" exact component={Study}/>
@@ -49,10 +50,12 @@ function App() {
                 <Router>
                 <Switch>
                   <AuthContext.Provider value={{auth:auth, setAuth:setAuth}}> 
+                  <PendingContext.Provider value={{pendingLength: pendingLength, setPendingLength:setPending}}> 
                   <Navbar/>
                     <Route path="/" exact component={Signup}/>
                     <Route path="/login" exact component={Login}/>
                     <Route path="/signup" exact component={Signup}/>
+                  </PendingContext.Provider> 
                   </AuthContext.Provider>
                 </Switch>
                 </Router>

@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 const StudyTop = () =>{
 
     const [numCards, setNumCards] = useState(0)
-    const [flashCards, setFlashCards] = useState([]);
     const history = useHistory()
 
     const userInputHandler = (e) => {
