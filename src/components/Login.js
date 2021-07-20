@@ -29,12 +29,6 @@ const Login = () => {
             sessionStorage.setItem("session_id", userData.session_id)
             setAuth(userData.session_id)
             history.push("/account");
-            // sessionStorage.setItem("pending_length", userData.pending_length)
-            // setPendingLength(userData.pending_length)
-            // setTimeout(()=>{
-            //     history.push("/account");
-            // }, 3000)
-            // 
         }else{
             setHelperMessage("Invalid credentials")
             history.push("/login");
