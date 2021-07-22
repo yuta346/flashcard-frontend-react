@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 
 
@@ -30,6 +31,7 @@ const CreateFlashCard = () =>{
     const [statusMessage, setStatusMessage] = useState("")
     const [wordNotFoundMessage, setWordNotFoundMessage] = useState("")
     const [searchStatus, setSearchStatus] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
                                                 
     console.log(definition_choice)
@@ -41,7 +43,8 @@ const CreateFlashCard = () =>{
         setRadioValue(event.target.value);
     };
 
-    const submitWordHandler = async (e) => {
+    const searchWordHandler = async (e) => {
+        setIsLoading(true)
         e.preventDefault();
         const response = await axios.post('http://127.0.0.1:5000/api/serach/definitions', {"session_id":sessionStorage.getItem("session_id"),"word":wordInput});    
         const data = response.data
@@ -54,7 +57,7 @@ const CreateFlashCard = () =>{
             setSearchStatus(false)
             setWordNotFoundMessage("This Word Does Not Exist ")
         }
-        
+        setIsLoading(false)
     }
 
     const submitHandler = async () =>{
@@ -72,7 +75,7 @@ const CreateFlashCard = () =>{
     return (<div className="create-flashcard-container">
                 <h1 style={{width:"100%"}}>Create A Flashard</h1>
                 <p style={{textAlign:"center", color:"#000000", fontWeight:"bold"}}>with Oxford Dictionary</p>
-                    <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
+                    <form onSubmit={searchWordHandler} style={{marginTop:"50px"}}>
                         <div>
                             <div>
                                 <p style={{fontSize:"1.3rem", margin:"0 0 8px 3px"}}>Word</p>
@@ -87,14 +90,14 @@ const CreateFlashCard = () =>{
                             </div>
                             <div className="create-flashcard-button-container">
                                 {! searchStatus ? <p>{wordNotFoundMessage}</p>:null}
-                                <button className="create-flashcard-btn" onClick={submitWordHandler}>SEARCH</button>
+                                <button className="create-flashcard-btn" onClick={searchWordHandler}>SEARCH</button>
                             </div>
                         </div>   
                     </form>  
 
                 <FormControl component="fieldset" style={{marginTop:"30px"}}>
                     <FormLabel component="legend" style={{marginBottom:"10px", fontSize:"1.3rem"}}>Choose a definition</FormLabel>
-                    <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>
+                    {isLoading ? <BeatLoader size={30} color={"#24a0ed"}/> : <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>
                         {definition_choice.map((choice, index)=> {
                             if(choice["short_definition"] != null)
                             return  (
@@ -103,7 +106,7 @@ const CreateFlashCard = () =>{
                         }
                        )}
                     <p style={status == "success" ? {fontSize:"1rem", color:"#22bb33"} : {fontSize:"1rem", color:"#F32013"}}>{statusMessage}</p>
-                    </RadioGroup>
+                    </RadioGroup>}
                     </FormControl>
                     <div className="create-flashcard-button-container">
                         <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
