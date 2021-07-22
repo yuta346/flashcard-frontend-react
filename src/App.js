@@ -9,6 +9,7 @@ import Study from "./components/Study";
 import StudyTop from "./components/StudyTop";
 import StudyExit from "./components/StudyExit"
 import AllFlashCards from "./components/AllFlashCards";
+import CreateFlashCardTop from "./components/CreateFlashCardTop";
 import CreateFlashCard from "./components/CreateFlashCard";
 import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
 import Account from "./components/Account";
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/study" exact component={Study}/>
                   <Route path="/study/exit" exact component={StudyExit}/>
                   <Route path="/all/flashcards" exact component={AllFlashCards}/>
+                  <Route path="/create/flashcard/top" exact component={CreateFlashCardTop}/>
                   <Route path="/create/custom_flashcard" exact component={CreateCustomFlashCard}/>
                   <Route path="/create/flashcard" exact component={CreateFlashCard}/>
                   <Route path="/account" exact component={Account}/>

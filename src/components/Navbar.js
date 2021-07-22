@@ -155,7 +155,7 @@ const Navbar = () => {
                               </MenuItem> */}
                               <MenuItem onClick={handleClose} 
                                         label="CreateFlashCard" 
-                                        component={Link} to="/create/flashcard"
+                                        component={Link} to="/create/flashcard/top"
                               >
                               Create Flashcard
                               </MenuItem>

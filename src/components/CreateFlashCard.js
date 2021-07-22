@@ -26,6 +26,7 @@ const CreateFlashCard = () =>{
     const [wordInput, setWordInput] = useState("")
     const [definition_choice, setDefinitionChoice] = useState([])
     const [radioValue, setRadioValue] = useState('');
+    const [status, setStatus] = useState('')
     const [statusMessage, setStatusMessage] = useState("")
     const [wordNotFoundMessage, setWordNotFoundMessage] = useState("")
     const [searchStatus, setSearchStatus] = useState(null)
@@ -57,17 +58,20 @@ const CreateFlashCard = () =>{
     }
 
     const submitHandler = async () =>{
-        const response = await axios.post('http://127.0.0.1:5000/api/add/word', {"session_id":sessionStorage.getItem("session_id"), "radioValue":radioValue, "word_info_list":definition_choice});    
+        const response = await axios.post('http://127.0.0.1:5000/api/add/word/dictionary', {"session_id":sessionStorage.getItem("session_id"), "radioValue":radioValue, "word_info_list":definition_choice});    
         const data = response.data
         if(data.status == "success"){
+            setStatus("success")
             setStatusMessage("Added Successfully!")
+        }else{
+            setStatus("fail")
+            setStatusMessage("Word with this definition already exists")
         }
     }
 
-
-
     return (<div className="create-flashcard-container">
                 <h1 style={{width:"100%"}}>Create A Flashard</h1>
+                <p style={{textAlign:"center", color:"#000000", fontWeight:"bold"}}>with Oxford Dictionary</p>
                     <form onSubmit={submitWordHandler} style={{marginTop:"50px"}}>
                         <div>
                             <div>
@@ -87,6 +91,7 @@ const CreateFlashCard = () =>{
                             </div>
                         </div>   
                     </form>  
+
                 <FormControl component="fieldset" style={{marginTop:"30px"}}>
                     <FormLabel component="legend" style={{marginBottom:"10px", fontSize:"1.3rem"}}>Choose a definition</FormLabel>
                     <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>
@@ -97,12 +102,13 @@ const CreateFlashCard = () =>{
                         )
                         }
                        )}
-                    <p style={{fontSize:"1rem", color:"#22bb33"}}>{statusMessage}</p>
+                    <p style={status == "success" ? {fontSize:"1rem", color:"#22bb33"} : {fontSize:"1rem", color:"#F32013"}}>{statusMessage}</p>
                     </RadioGroup>
                     </FormControl>
                     <div className="create-flashcard-button-container">
                         <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
                     </div>
+
             </div>)
 }
 
