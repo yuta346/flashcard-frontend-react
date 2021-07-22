@@ -19,7 +19,7 @@ const Account = () =>{
 
             activities.forEach(e => {
                 e.date = new Date(e.date).toString()
-                e.date = e.date.split(' ').slice(0, 5).join('-')
+                e.date = e.date.split(' ').slice(0, 4).join('-')
             });
             setUserWords(activities)
             setNumMastered(numMastered)

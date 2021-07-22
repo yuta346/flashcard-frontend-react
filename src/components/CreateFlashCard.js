@@ -87,7 +87,6 @@ const CreateFlashCard = () =>{
                             </div>
                         </div>   
                     </form>  
-
                 <FormControl component="fieldset" style={{marginTop:"30px"}}>
                     <FormLabel component="legend" style={{marginBottom:"10px", fontSize:"1.3rem"}}>Choose a definition</FormLabel>
                     <RadioGroup aria-label="definition" name="gender1" value={radioValue} onChange={handleRadioChange}>
@@ -104,13 +103,6 @@ const CreateFlashCard = () =>{
                     <div className="create-flashcard-button-container">
                         <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
                     </div>
-                
-                   
-               
-        
-        
-            
-                  
             </div>)
 }
 

@@ -139,13 +139,20 @@ const Navbar = () => {
                               >
                                 Quiz
                               </MenuItem>
-                              
+
                               <MenuItem onClick={handleClose} 
+                                        label="All Flashcards" 
+                                        component={Link} to="/all/flashcards"
+                              >
+                                All Flashcards
+                              </MenuItem>
+                              
+                              {/* <MenuItem onClick={handleClose} 
                                         label="CreateFlashCard" 
                                         component={Link} to="/create/custom_flashcard"
                               >
                               Create Custom Flashcard
-                              </MenuItem>
+                              </MenuItem> */}
                               <MenuItem onClick={handleClose} 
                                         label="CreateFlashCard" 
                                         component={Link} to="/create/flashcard"

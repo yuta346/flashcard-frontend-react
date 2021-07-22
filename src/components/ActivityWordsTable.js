@@ -45,7 +45,7 @@ const columns = [
   {
     id: 'date',
     label: 'Last Studied Date',
-    minWidth: 100,
+    minWidth: 200,
     align: 'left',
 
     format: (value) => value.toLocaleString('en-US'),

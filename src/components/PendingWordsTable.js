@@ -45,7 +45,7 @@ const PendingWords = () =>{
             const pending_words= response.data.pending_words
             setPendingWords(pending_words)
             sessionStorage.setItem("pending_length", pending_words.length)
-            setPendingLength(sessionStorage.getItem("pending_length"))
+            setPendingLength(pending_words.length)
         }
     }
 
@@ -57,7 +57,7 @@ const PendingWords = () =>{
             const pending_words= response.data.pending_words
             setPendingWords(pending_words)
             sessionStorage.setItem("pending_length", pending_words.length)
-            setPendingLength(sessionStorage.getItem("pending_length"))
+            setPendingLength(pending_words.length)
         }
     }
 

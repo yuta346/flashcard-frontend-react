@@ -199,6 +199,8 @@
     height: 660px;
     box-shadow: 0 2px 5px #ccc;
     text-align: left;
+    display: block;
+    overflow: auto;
 }
 
 .create-flashcard-container h1{

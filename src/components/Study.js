@@ -19,7 +19,7 @@ const Study = () => {
 
     useEffect(()=>{
         const f = async ()=>{
-            const response = await axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
+            const response = await axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
             setFlashCards(response.data.word_list)
         }
         f() 
@@ -30,7 +30,7 @@ const Study = () => {
     }
 
     const generateFlashCards = async () => {
-        const response = await axios.post('http://127.0.0.1:5000/api/display_all_flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
+        const response = await axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
         setFlashCards(response.data.word_list)
     }
     
