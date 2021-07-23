@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import axios from "axios"
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid, GridRow } from '@material-ui/data-grid';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -55,18 +55,6 @@ const AllFlashCards = () =>{
                         }}
                   className={classes.root}
         />
-            {/* <div class="pending-btn-container">
-                <button className="pending-approve-btn"
-                        onClick={approveHandler}
-                >
-                    APPROVE
-                </button>
-                <button className="pending-decline-btn"
-                        onClick={declineHandler}
-                >
-                    DECLINE
-                </button>
-            </div> */}
         </div>
     </div>
   );

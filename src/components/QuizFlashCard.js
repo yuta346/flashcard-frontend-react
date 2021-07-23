@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom"
 import { AuthContext } from "../AuthContext";
 import axios from 'axios';
 import FlashCard from "./FlashCard"
-import NoFlashCards from "./NoFlashCards"
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -13,7 +11,7 @@ const QuizFlashCard = ({flashCards, length}) =>{
     const {auth} = useContext(AuthContext);
     const [current, setCurrent] = useState(0);
     const history = useHistory();
-    const isMastered = sessionStorage.getItem("isMastered")
+
     
     const nextFlashCard = () =>{
         if(current === length -1){

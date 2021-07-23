@@ -47,15 +47,10 @@ const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
-  console.log("########")
-  console.log(auth)
-  console.log(pendingLength)
-  console.log("########")
-
-
   const logout = () => {
     sessionStorage.removeItem("session_id")
     sessionStorage.removeItem("pending_length")
+    sessionStorage.removeItem("isMastered")
     setAuth("")
     setPendingLength("")
   }
@@ -147,15 +142,9 @@ const Navbar = () => {
                                 All Flashcards
                               </MenuItem>
                               
-                              {/* <MenuItem onClick={handleClose} 
-                                        label="CreateFlashCard" 
-                                        component={Link} to="/create/custom_flashcard"
-                              >
-                              Create Custom Flashcard
-                              </MenuItem> */}
                               <MenuItem onClick={handleClose} 
                                         label="CreateFlashCard" 
-                                        component={Link} to="/create/flashcard/top"
+                                        component={Link} to="/create/flashcard"
                               >
                               Create Flashcard
                               </MenuItem>

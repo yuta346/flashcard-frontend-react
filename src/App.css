@@ -174,7 +174,7 @@
 
 .forward-icon {
   position: absolute;
-  top: 43%;
+  top: 50%;
   right: 360px;
   cursor: pointer;
   user-select: none;
@@ -194,9 +194,9 @@
     position: relative;
     padding: 25px 15px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 15px;
     width:50%;
-    height: 660px;
+    height: 650px;
     box-shadow: 0 2px 5px #ccc;
     text-align: left;
     display: block;
@@ -212,8 +212,8 @@
 
 .create-flashcard-container p{
   color:#0F5298;
-  font-size:1.2rem;
-  margin:5px;
+  font-size:1.3rem;
+  margin:5px 0px 0px 3px
 }
 
 .create-flashcard-button-container{
@@ -237,15 +237,6 @@
   text-decoration: none;
 }
 
-.part-of-speech{
-  margin-left:10px;
-}
-
-.part-of-speech-dropdown{
-  width:200px;
-  height:55px;
-  font-size:1rem;
-}
 
 .create-flashcard-btn{
   border: none;

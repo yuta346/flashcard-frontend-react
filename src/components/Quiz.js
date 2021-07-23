@@ -16,7 +16,8 @@ const Quiz = () =>{
             axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id")})
                     .then(res => {
                         setFlashCards(res.data.word_list);  
-                        setLength(res.data.word_list.length)
+                        setLength(res.data.word_list.length);
+                        console.log(res.data.word_list)
                         if(res.data.word_list.length >= 4){
                             setIsMoreThanFour(true)
                         }else{

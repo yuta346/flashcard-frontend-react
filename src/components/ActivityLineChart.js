@@ -3,8 +3,10 @@ import { LineChart, Line, YAxis, XAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 const ActivityLineChart = ({activiyTimeSeries}) =>{
 
+    console.log(activiyTimeSeries)
+
     activiyTimeSeries.forEach((activity) => {
-        activity["Number of Question Attempted"] = activity["Correct"] +  activity["Wrong"]
+        activity["Question Attempted"] = activity["Correct"] +  activity["Wrong"]
         activity["Percentage Correct"] = Math.round(activity["Correct"]/(activity["Correct"] + activity["Wrong"]) * 100)
     })
 

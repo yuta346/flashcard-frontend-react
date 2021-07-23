@@ -32,6 +32,7 @@ const PendingWords = () =>{
             const f = async ()  =>{
                 const response = await axios.post('http://127.0.0.1:5000/api/display/words/pending', {"session_id":sessionStorage.getItem("session_id")});
                 const pending_words= response.data.pending_words
+                console.log(pending_words)
                 setPendingWords(pending_words)
         }
         f()
@@ -41,6 +42,7 @@ const PendingWords = () =>{
         if(selected.length < 1 || selected == undefined){
             return;
         }else{
+            console.log(selected.slice(-1)[0])
             const response = await axios.post("http://127.0.0.1:5000/api/update/pending",{"session_id":sessionStorage.getItem("session_id"), "selected":selected.slice(-1)[0],"pending_status":"approve"})
             const pending_words= response.data.pending_words
             setPendingWords(pending_words)

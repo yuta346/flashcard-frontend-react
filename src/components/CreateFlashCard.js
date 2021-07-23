@@ -1,6 +1,6 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom"
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -74,7 +74,6 @@ const CreateFlashCard = () =>{
 
     return (<div className="create-flashcard-container">
                 <h1 style={{width:"100%"}}>Create A Flashard</h1>
-                <p style={{textAlign:"center", color:"#000000", fontWeight:"bold"}}>with Oxford Dictionary</p>
                     <form onSubmit={searchWordHandler} style={{marginTop:"50px"}}>
                         <div>
                             <div>
@@ -111,6 +110,7 @@ const CreateFlashCard = () =>{
                     <div className="create-flashcard-button-container">
                         <button className="create-flashcard-btn" onClick={submitHandler}>CREATE</button>
                     </div>
+                    <p style={{margin:"30px 0 10px 0", fontSize:"20px", textAlign:"center"}}>Create a flashcard manually? <Link style={{textDecoration:"none"}} to="/create/custom/flashcard">Click here</Link></p>
 
             </div>)
 }

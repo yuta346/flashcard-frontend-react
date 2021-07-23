@@ -8,7 +8,6 @@ const Login = () => {
 
     const {setAuth} = useContext(AuthContext);
     const {setPendingLength} = useContext(PendingContext)
-    console.log(setPendingLength)
     const [userInput, setUserInput] = useState({"username":"","password":""})
     const [helperMessage, setHelperMessage] = useState("")
     const history = useHistory();
