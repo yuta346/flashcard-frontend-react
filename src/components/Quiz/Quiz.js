@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from "react";
 import QuizFlashCard from "./QuizFlashCard";
-import NoFlashCards from "../FlashCard/NoFlashCards"
+import NoFlashCards from "../Error/NoFlashCards"
 import axios from 'axios';
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -29,10 +29,10 @@ const Quiz = () =>{
     },[])
 
     const output = {
-        "false-false": <NoFlashCards/>,
+        "false-false": <NoFlashCards type={"quiz"}/>,
         "false-true":<QuizFlashCard flashCards={flashCards} length={length}/>,
         "true-false": <BeatLoader loading/>,
-        "true-true":<BeatLoader/>
+        "true-true":<BeatLoader loading/>
     }
 
     console.log(`${isLoading}-${isMoreThanFour}`)

@@ -4,7 +4,6 @@ import { AuthContext } from "../../AuthContext";
 import axios from 'axios';
 import FlashCard from "../FlashCard/FlashCard";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import BeatLoader from "react-spinners/BeatLoader";
 
 
 const QuizFlashCard = ({flashCards, length}) =>{

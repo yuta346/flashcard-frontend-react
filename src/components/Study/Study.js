@@ -1,70 +1,45 @@
-import React, {useState, useEffect, useContext} from "react";
-import { useHistory, useLocation } from "react-router";
-import { AuthContext } from "../../AuthContext";
+import React, {useState, useEffect} from "react";
+import { useLocation } from "react-router";
 import axios from 'axios';
-import FlashCardStudy from "../FlashCard/FlashCard"
-import NoFlashCards from "../FlashCard/NoFlashCards";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import StudyFlashCardTable from "./StudyFlashCardTable"
+import NoFlashCards from "../Error/NoFlashCards";
+import StudyFlashCard from "./StudyFlashCard";
+import BeatLoader from "react-spinners/BeatLoader";
+
 
 const Study = () => {
     const location = useLocation();
-    const history = useHistory();
-    const {auth} = useContext(AuthContext);
     const [numCards, setNumCards] = useState(location.state.numCards)
     const [flashCards, setFlashCards] = useState([]);
-    const length = flashCards.length;
-    const [current, setCurrent] = useState(0);
-    const [keyDown, setKeyDown] = useState(0)
+    const [length, setLength] = useState(0)
+    const [isLoading, setIsLoading] = useState(true);
+    const [isMoreThanOne,　setIsMoreThanOne] = useState(null)
 
     useEffect(()=>{
-        const f = async ()=>{
-            const response = await axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
-            setFlashCards(response.data.word_list)
-        }
-        f() 
+        setIsLoading(true)
+        axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards})
+                .then(res => {
+                    setFlashCards(res.data.word_list);  
+                    setLength(res.data.word_list.length);
+                    if(res.data.word_list.length >= 1){
+                        setIsMoreThanOne(true)
+                    }else{
+                        setIsMoreThanOne(false)
+                    }
+                })
+        setIsLoading(false)
     },[])
 
-    const userInputHandler = (e) => {
-        setNumCards(e.target.value)
+    const output = {
+        "false-false": <NoFlashCards type={"study"}/>,
+        "false-true":<StudyFlashCard flashCards={flashCards} length={length}/>,
+        "true-false": <BeatLoader loading/>,
+        "true-true":<BeatLoader loading/>
     }
-
-    const generateFlashCards = async () => {
-        const response = await axios.post('http://127.0.0.1:5000/api/display/generated/flashcards', {"session_id":sessionStorage.getItem("session_id"), "num_cards":numCards});
-        setFlashCards(response.data.word_list)
-    }
-    
-    const nextFlashCard = () =>{
-        if(current == length - 1){
-            history.push("/study/exit")
-        }
-        else{
-            setCurrent(current + 1);
-        }
-    }
-
 
     return (<div>
-            <div className="slider">
-                    {flashCards.length > 0 && <ArrowForwardIosIcon className="forward-icon" onClick={nextFlashCard} style={{ fontSize: 50, color:"grey"}} />}
-                    {flashCards.length > 0 ? flashCards.map((flashCard, index) => {
-                        flashCard["type"] = "study"
-                        return (<div>
-                        {index === current && <FlashCardStudy
-                                        key={index}
-                                        index={index} 
-                                        flashCard={flashCard} 
-                                        nextFlashCard={nextFlashCard}
-                                        />}
-                                </div>)
-                        })
-                        :
-                         <NoFlashCards/>
-                    }
-                    <p style={{textAlign:"center", marginTop:"10px"}}>Progress {current+1} of {length}</p>
-            </div>
-            <StudyFlashCardTable flashCards={flashCards}/>
+               {output[`${isLoading}-${isMoreThanOne}`]}
             </div>)
+    
 
 
 }
