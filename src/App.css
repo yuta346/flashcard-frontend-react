@@ -109,6 +109,7 @@
 
 .slider{
   margin-top: 70px;
+  position: relative;
 }
 
 .flashCard {
@@ -178,7 +179,7 @@
 
 .forward-icon {
   position: absolute;
-  top: 45%;
+  top: 42%;
   right: 360px;
   cursor: pointer;
   user-select: none;
