@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import { useHistory, useLocation } from "react-router";
-import { AuthContext } from "../AuthContext";
+import { AuthContext } from "../../AuthContext";
 import axios from 'axios';
-import FlashCardStudy from "./FlashCard"
-import NoFlashCards from "./NoFlashCards"
+import FlashCardStudy from "../FlashCard/FlashCard"
+import NoFlashCards from "../FlashCard/NoFlashCards";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StudyFlashCardTable from "./StudyFlashCardTable"
 

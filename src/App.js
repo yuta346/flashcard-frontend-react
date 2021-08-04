@@ -1,19 +1,19 @@
 import "./App.css";
 import {useState} from "react";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import Signup from "./components/Singup";
-import Quiz from "./components/Quiz";
-import Study from "./components/Study";
-import StudyTop from "./components/StudyTop";
-import StudyExit from "./components/StudyExit"
-import AllFlashCards from "./components/AllFlashCards";
-import CreateFlashCard from "./components/CreateFlashCard";
-import CreateCustomFlashCard from "./components/CreateCustomFlashCard";
-import Account from "./components/Account";
-import ResultTable from "./components/ResultTable"
-import PendingWordsTable from "./components/PendingWordsTable"
+import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Singup";
+import Quiz from "./components/Quiz/Quiz";
+import Study from "./components/Study/Study";
+import StudyTop from "./components/Study/StudyTop";
+import StudyExit from "./components/Study/StudyExit"
+import AllFlashCards from "./components/AllFlashCards/AllFlashCards";
+import CreateFlashCard from "./components/CreateFlashCard/CreateFlashCard";
+import CreateCustomFlashCard from "./components/CreateFlashCard/CreateCustomFlashCard";
+import Account from "./components/Dashboard/Account";
+import ResultTable from "./components/Quiz/ResultTable"
+import PendingWordsTable from "./components/PendingWords/PendingWordsTable"
 import {AuthContext} from "./AuthContext";
 import {PendingContext} from "./AuthContext";
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import '../App.css'
+import '../../App.css'
 import FlashCardFront from "./FlashCardFront";
 import FlashCardBack from "./FlashCardBack";
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom"
-import { AuthContext } from "../AuthContext";
+import { AuthContext } from "../../AuthContext";
 import axios from 'axios';
-import FlashCard from "./FlashCard"
+import FlashCard from "../FlashCard/FlashCard";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import BeatLoader from "react-spinners/BeatLoader";
 

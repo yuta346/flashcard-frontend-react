@@ -1,7 +1,6 @@
-
 import React, {useContext} from "react";
 import {Link} from "react-router-dom"
-import { AuthContext, PendingContext } from "../AuthContext";
+import { AuthContext, PendingContext } from "../../AuthContext";
 import { AppBar, Toolbar, Button,} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +13,7 @@ import MenuList from '@material-ui/core/MenuList';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import logo from "../image/logo.png"
+import logo from "../../image/logo.png"
 
 const useStyles = makeStyles(theme => ({
     root:{

@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import {useHistory, Link} from "react-router-dom";
-import { AuthContext } from "../AuthContext";
+import { AuthContext } from "../../AuthContext";
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 

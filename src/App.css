@@ -155,12 +155,16 @@
 .flashCard-word{
   font-size: 50px;
   text-align: center;
-  margin-top:70px;
+  margin-top:50px;
 }
 
 .flashCard-definition{
   margin:50px 0 10px 0;
+  font-size:16px;
+}
 
+.flashCard-example{
+  color:black;
 }
 
 .flashCard-span{
@@ -169,12 +173,12 @@
 }
 
 .flashCard-example{
-  color:#0F5298;
+  font-size:16px;
 }
 
 .forward-icon {
   position: absolute;
-  top: 50%;
+  top: 45%;
   right: 360px;
   cursor: pointer;
   user-select: none;
@@ -194,7 +198,7 @@
     position: relative;
     padding: 25px 15px;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 40px;
     width:50%;
     height: 650px;
     box-shadow: 0 2px 5px #ccc;

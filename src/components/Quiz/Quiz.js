@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from "react";
 import QuizFlashCard from "./QuizFlashCard";
-import NoFlashCards from "./NoFlashCards"
+import NoFlashCards from "../FlashCard/NoFlashCards"
 import axios from 'axios';
 import BeatLoader from "react-spinners/BeatLoader";
 

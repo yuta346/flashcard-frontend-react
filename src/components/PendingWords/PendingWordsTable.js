@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import {PendingContext} from "../AuthContext";
+import {PendingContext} from "../../AuthContext";
 import axios from "axios"
 import { DataGrid } from '@material-ui/data-grid';
 import { makeStyles } from '@material-ui/styles';
