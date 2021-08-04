@@ -95,7 +95,7 @@ const FlashCardFront = (props) => {
     
                     {sessionStorage.getItem('type') =="quiz" ? 
                         <button type="submit" 
-                                className={classes.button}
+                                className="flashCard-btn"
                                 onClick={handleSubmit_quiz}
                         >
                         SUBMIT ANSWER

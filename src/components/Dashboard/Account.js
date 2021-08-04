@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
+import {Link} from "react-router-dom"
 import ActivityPieChart from "./ActivityPieChart";
 import ActivityLineChart from "./ActivityLineChart"
 import ActivityWordsTable from "./ActivityWordsTable";
@@ -34,7 +35,12 @@ const Account = () =>{
 
 
     return (<div>
-                <h1 style={{margin:"40px 0px 0px 150px"}}>Dashboard</h1>
+                {userWords.length > 1 ? <h1 style={{margin:"40px 0px 0px 150px"}}>Dashboard</h1> 
+                                      : <div style={{margin:"40px 0px 0px 150px"}}>
+                                            <h1>Dashboard</h1> 
+                                            <h3 style={{margin:"10px auto 10px auto"}}>Your Quiz Performance will show up here.</h3>
+                                            <h3 style={{margin:"0 0 10px 0"}}>Ready for a Quiz now? <Link style={{textDecoration:"none"}} to="login">Take a Quiz</Link></h3>
+                                       </div>}
                 <div className="chart-container">
                     <ActivityLineChart activiyTimeSeries={activiyTimeSeries}/>
                     <ActivityPieChart numMastered={numMastered}/>

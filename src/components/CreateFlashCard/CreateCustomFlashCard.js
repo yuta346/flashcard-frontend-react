@@ -56,6 +56,7 @@ const CreateCustomFlashCard = () =>{
                             rows={4}
                             variant="outlined"
                             name="definition"
+                            inputProps={{ maxLength: 50 }}
                         />
 
                         <p>Example Sentence (Optional)</p>
@@ -67,6 +68,7 @@ const CreateCustomFlashCard = () =>{
                             rows={4}
                             variant="outlined"
                             name="example"
+                            inputProps={{ maxLength: 50 }}
                         />
                         <p style={status == "success" ? {fontSize:"1rem", color:"#22bb33"} : {fontSize:"1rem", color:"#F32013"}}>{statusMessage}</p>
                         <div className="create-flashcard-button-container">

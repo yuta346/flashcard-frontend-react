@@ -24,7 +24,7 @@ const Signup = () => {
         if (userData.status === "success"){
             setAuth({...auth, username:userData.username, session_id:userData.session_id})
             sessionStorage.setItem("session_id", userData.session_id)
-            history.push("/account")
+            history.push("/create/flashcard")
         }else{
             setHelperMessage("This account already exists")
             history.push("/signup")
