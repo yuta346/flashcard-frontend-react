@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import FlashCardStudy from "../FlashCard/FlashCard"
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StudyFlashCardTable from "./StudyFlashCardTable"
+import FlashCard from "../FlashCard/FlashCard";
 
 const StudyFlashCard = ({flashCards}) => {
     const history = useHistory();
@@ -25,7 +25,7 @@ const StudyFlashCard = ({flashCards}) => {
                     {flashCards.map((flashCard, index) => {
                         flashCard["type"] = "study"
                         return (<div>
-                        {index === current && <FlashCardStudy
+                        {index === current && <FlashCard
                                         key={index}
                                         index={index} 
                                         flashCard={flashCard} 

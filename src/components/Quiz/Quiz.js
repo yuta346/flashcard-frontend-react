@@ -17,7 +17,6 @@ const Quiz = () =>{
                     .then(res => {
                         setFlashCards(res.data.word_list);  
                         setLength(res.data.word_list.length);
-                        console.log(res.data.word_list)
                         if(res.data.word_list.length >= 4){
                             setIsMoreThanFour(true)
                         }else{

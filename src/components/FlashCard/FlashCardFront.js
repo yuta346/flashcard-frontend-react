@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(3),
     },
-    button: {
-      margin: theme.spacing(1, 1, 0, 0),
-      width: "100%",
-    },
+    // button: {
+    //   margin: theme.spacing(1, 1, 0, 0),
+    //   width: "100%",
+    // },
   }));
 
 
@@ -77,7 +77,7 @@ const FlashCardFront = (props) => {
                 <div className="flashCard-middle">
                     <p className="flashCard-word">{word}</p>
                 </div>     
-                <div>
+                <div className="flashCard-form">
                     <FormControl component="fieldset" error={error} className={classes.formControl}>
                         <RadioGroup aria-label="quiz" 
                                     name="quiz" 
@@ -92,24 +92,22 @@ const FlashCardFront = (props) => {
                         </RadioGroup>
                         { sessionStorage.getItem('type') =="quiz" ? null:<FormHelperText style={{ fontSize: 16}}>{helperText}</FormHelperText>}
                     </FormControl>
+    
                     {sessionStorage.getItem('type') =="quiz" ? 
-                        <Button type="submit" 
-                                variant="outlined" 
-                                color="default" 
+                        <button type="submit" 
                                 className={classes.button}
                                 onClick={handleSubmit_quiz}
                         >
-                        Submit Answer
-                        </Button>
+                        SUBMIT ANSWER
+                        </button>
                         :
-                        <Button type="submit" 
-                                variant="outlined" 
-                                color="default" 
-                                className={classes.button}
+                        <button type="submit" 
+                                className="flashCard-btn"
                                 onClick={handleSubmit_study}
                         >
-                        Check Answer
-                        </Button>}
+                        CHECK ANSWER
+                        </button>
+                    }
                 </div>
             </div>  
     )
